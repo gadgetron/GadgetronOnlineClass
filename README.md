@@ -2,14 +2,24 @@
 
 During June 2020 we will host the “Gadgetron Online Course”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online.
  
-This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The course is organised remotely and will be accessible in live via visio-conference. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. Please, go to this [page](interactive-session.md) for more information, we encourage you to apply.
+
+This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. 
+
+
+The course is organised remotely and will be accessible in live via visio-conference. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. Please, go to this [page](interactive-session.md) for more information, we encourage you to apply.
+
 
 The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
+
+
+For any questions, feel to contact us on the [forum](https://groups.google.com/forum/#!forum/gadgetron) of Gagdetron or using this [alias](gadgetron2020@sciencesconf.org)
+
 
 Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
 
 
-# Agenda
+
+## Agenda
 
 ### Day 1 : Gadgetron Introduction
 
@@ -36,12 +46,33 @@ June 25, 2019 | 15:00-16:30 | [link](https://link) | [ ] |
 June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |  
 
 
-# Detailled Agenda
+## Detailled Agenda
 
 Connection procedures is available [here](live-session.md).  
 	
 
-# Test the Ismrmrd and Gadgetron installation in advance
+## Website Structure
+
+All information will be written in a README file in each directories. Additionnal contents like data, codes, powerpoint will be upload in the material folder for each lectures 
+
+Installation
+└── README.md
+Interactive-Session
+└── README.md
+Material
+├── Day1
+│   ├── Lecture1
+│   │   └── README.md
+│   ├── Lecture2
+│   └── Lecture3
+├── Day2
+└── Day3
+README.md 
+Visio-Modalities
+└── README.md
+
+
+## Test the Ismrmrd and Gadgetron installation in advance
 
 > <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
 > Note that this course is based on the following teaching material: 
