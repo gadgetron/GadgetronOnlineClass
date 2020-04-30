@@ -1,4 +1,17 @@
-#Preparation for the online toolkit
+# Preparation information for participant
+
+## Modalities for accessing the live visio-conference
+
+## Practical notes
+
+## Code of conduct 
+
+Equivalent of paragrap Practical notes
+and code of conduct of http://www.fieldtriptoolbox.org/workshop/toolkit2020/
+
+
+
+## Preparation information for the organiser
 
 Copy from http://www.fieldtriptoolbox.org/workshop/toolkit2020/preparation/ 
 TODO: need to be adpated 

@@ -25,23 +25,23 @@ Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roop
 
 Date  | Time | Link | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 11, 2020 | 14:00-15:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day1/Lecture1) | [Gadgetron, a high level overview introduction] | David Hansen
-June 11, 2020 | 15:00-16:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day1/Lecture2) | [Gadgetron, a low level overview introduction] | Kristoffer Knudsen
-June 11, 2020 | 16:00-17:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
+June 11, 2020 | 14:00-15:00 | [link](Courses/Day1/Lecture1) | [Gadgetron, a high level overview introduction] | David Hansen
+June 11, 2020 | 15:00-16:00 | [link](Courses/Day1/Lecture2) | [Gadgetron, a low level overview introduction] | Kristoffer Knudsen
+June 11, 2020 | 16:00-17:00 | [link](Courses/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
 
 ### Day 2 :Ismrmrd, a vendor-free format for MRI reconstruction
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 18, 2020 | 14:00-15:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day2/Lecture1) | [Ismrmrd Part 1: Introduction] | Maxime Yon  
-June 18, 2020 | 15:00-16:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day2/Lecture2) | [Ismrmrd Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai & John
-June 18, 2020 | 16:00-17:00 | [link](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue , Pierre ? 
+June 18, 2020 | 14:00-15:00 | [link](Courses/Day2/Lecture1) | [Ismrmrd Part 1: Introduction] | Maxime Yon  
+June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [Ismrmrd Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai & John
+June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue , Pierre ? 
 
 ### Day 3 : Programming lessons
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 25, 2019 | 14:00-15:00 | [link](https://link) | [Protyping at the scanner with Matlab ] | Oliver Josephs ? , Aurelien? , Stan  ? 
+June 25, 2019 | 14:00-15:00 | [link](https://link) | [Protyping at the scanner with Matlab ] | Oliver Josephs ?  
 June 25, 2019 | 15:00-16:30 | [link](https://link) | [ ] |  
 June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |  
 
@@ -51,11 +51,11 @@ June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |
 > <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
 > Note that this course is based on the following teaching material: 
 
-To achieve good interaction between lecturers and participants - and especially tutors and participants in the work in progress sessions - we (lecturers and participants) have preparation for the online course. 
+To achieve good interaction between lecturers and participants - and especially tutors and participants in the work in progress sessions -  we highly recommand to read the preparation list.
 
-Preparation list is available [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Preparation).
+Preparation list for speakers is available [here](Preparation).
 
-Information to follow the in conference is available [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Interactive-Session). 	
+Preparation list for participants [here](Preparation). 	
 
 
 ## Website Structure
@@ -64,11 +64,7 @@ All information will be written in a README file in each directories. Additionna
 
 ```bash
 
-├── Installation
-│   └── README.md
-├── Interactive-Sessions
-│   └── README.md
-├── Material
+├── Courses
 │   ├── Day1
 │   │   ├── Lecture1
 │   │   │   └── README.md
@@ -78,27 +74,29 @@ All information will be written in a README file in each directories. Additionna
 │   │       └── README.md
 │   ├── Day2
 │   └── Day3
+├── Installation
+│   └── README.md
+├── Interactive-Sessions
+│   └── README.md
 ├── Preparation
 │   └── README.md
-├── README.md
-└── Visio-Modalities
-    └── README.md
+└── README.md
 
 ```
 
 
 ## Test the Ismrmrd and Gadgetron installation in advance
 
+Since all participants are working at home on their own computer, we asked the participants to test their ISMRMRD and Gadgetron installation in advance. 
+Detailed installation instructions has been summarized [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Installation).  
+
+Feel free to contact us and to post any inquiries on the gadegtron [forum](https://groups.google.com/forum/#!forum/gadgetron)
+
 > <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
 > Note that this course is based on the following teaching material: 
 > [link](http://gadgetron.github.io/tutorial/) 
 > [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
-> Running on of them before is highly recommended
-
-Since all participants are working at home on their own computer, we asked the participants to test their Ismrmrd and Gadgetron installation in advance. 
-Detailed installation instructions has been summarized [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Installation).  
-
-Feel free to contact us and to post any inquiries on the gadegtron [forum](https://groups.google.com/forum/#!forum/gadgetron)
+> Running one of them before is highly recommended
 
 ## 1. Introduction courses (day 1 : June 11th 2020)
 
