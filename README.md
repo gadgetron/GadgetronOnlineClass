@@ -38,13 +38,13 @@ June 18, 2020 | 14:00-15:00 | [link](Courses/Day2/Lecture1) | [Ismrmrd Part 1: I
 June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [Ismrmrd Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai & John
 June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue , Pierre ? 
 
-### Day 3 : Foreign-Language-Interface (MATLAB-Python)
+### Day 3 : Foreign-Language-Interface 
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 25, 2019 | 14:00-15:00 | [link](https://link) | [Foreign-Language-Interface ] | Kristoffer Knudsen
-June 25, 2019 | 15:00-16:30 | [link](https://link) | [Protyping at the scanner with MATLAB ] |  Oliver Josephs ?  
-June 25, 2019 | 16:00-17:00 | [link](https://link) | [  ] | Aurelien ? Stan ?  Raj 
+June 25, 2019 | 15:00-16:30 | [link](https://link) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs ?  
+June 25, 2019 | 16:00-17:00 | [link](https://link) | [Protyping at the scanner with MATLAB part 2] | Aurelien ? Stan ?  
 
 ### Day 4 : C++ 
 
@@ -53,10 +53,7 @@ To be annouced later in the year
 
 ## Participate to Online Course Agenda (Preparation and Modalities)
 
-> <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
-> Note that this course is based on the following teaching material: 
-
-To achieve good interaction between lecturers and participants - and especially tutors and participants in the work in progress sessions -  we highly recommand to read the preparation list.
+To achieve good interaction between lecturers and participants - and especially tutors and participants in the work in progress sessions - we highly recommand to read the preparation list.
 
 Preparation list for speakers is available [here](Preparation#preparation-information-for-participant).
 
@@ -99,8 +96,8 @@ Feel free to contact us and to post any inquiries on the gadegtron [forum](https
 
 > <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
 > Note that this course is based on the following teaching material: 
-> [link](http://gadgetron.github.io/tutorial/) 
-> [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
+> Tutorial with docker [link](http://gadgetron.github.io/tutorial/) 
+> Tutorial Hello word [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 > Running one of them before is highly recommended
 
 ## 1. Introduction courses (day 1 : June 11th 2020)
