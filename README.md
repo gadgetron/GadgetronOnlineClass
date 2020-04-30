@@ -1,8 +1,8 @@
 # Gadgetron Online Course
 
-During June 2020 we will host the “Gadgetron Online Course”. Although initially scheduled to take place in Bordeaux, the COVID-19 situation made that impossible. We are instead hosting it online.
+During June 2020 we will host the “Gadgetron Online Course”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online.
  
-This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The course is organised remotely and will be accessible in live via visio-conference. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. More information is available [here](interactive-session.md).
+This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The course is organised remotely and will be accessible in live via visio-conference. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. Please, go to this [page](interactive-session.md) for more information, we encourage you to apply.
 
 The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
@@ -24,7 +24,7 @@ June 11, 2020 | 16:00-17:00 | [link](https://link) | [Basic reconstruction using
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 18, 2020 | 14:00-15:00 | [link](https://link) | [Ismrmrd Part 1: Introduction] | Maxime / 
-June 18, 2020 | 15:00-16:00 | [link](https://link) | [Ismrmrd Part 2: xml style sheet : Siemens/GE/Bruker conversion] |
+June 18, 2020 | 15:00-16:00 | [link](https://link) | [Ismrmrd Part 2: xml style sheet : Siemens/GE/Bruker conversion] | Vinai & John
 June 18, 2020 | 16:00-17:00 | [link](https://link) | [Communication process with the Siemens scanner] | Hui Xue ? 
 
 ### Day 3 : Programming lessons
@@ -39,7 +39,7 @@ June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |
 # Detailled Agenda
 
 Connection procedures is available [here](live-session.md).  
-
+	
 
 # Test the Ismrmrd and Gadgetron installation in advance
 
