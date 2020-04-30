@@ -1,12 +1,13 @@
 # Gadgetron Online Course
 
-This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. During June 2020 we will host the “Advanced MEG/EEG toolkit”. Although initially scheduled to take place in Bordeaux, the COVID-19 situation made that impossible. We are instead hosting it online.
+During June 2020 we will host the “Gadgetron Online Course”. Although initially scheduled to take place in Bordeaux, the COVID-19 situation made that impossible. We are instead hosting it online.
+ 
+This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The course is organised remotely and will be accessible in live via visio-conference. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. More information is available [here](interactive-session.md).
+
+The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
 Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
 
-The course is organised remotely and will be accessible in live via visio-conference. Connection procedures is available [here](live-session.md). Input from participants is key element to make this course interactive. In addition of the course and pratical course, participants will have the possibility to propose working in progress session on a MRI reconstruction topic. More information is available [here](interactive-session.md). Each participant needs to a computer running either Linux, OSX or Windows with the Gadgetron up and running. Installation procedures has been summarized [here](gt-installation.md).  
-
-The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
 # Agenda
 
@@ -23,25 +24,21 @@ June 11, 2020 | 16:00-17:00 | [link](https://link) | [Basic reconstruction using
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 18, 2020 | 14:00-15:00 | [link](https://link) | [Ismrmrd Part 1: Introduction] | Maxime / 
-June 18, 2020 | 15:00-16:00 | [link](https://link) | [Ismrmrd Part 2: xml style
-sheet : Siemens/GE/Bruker
-conversion] |
-June 18, 2020 | 16:00-17:00 | [link](https://link) | [Communication process with
-the Siemens scanner] | Hui Xue
+June 18, 2020 | 15:00-16:00 | [link](https://link) | [Ismrmrd Part 2: xml style sheet : Siemens/GE/Bruker conversion] |
+June 18, 2020 | 16:00-17:00 | [link](https://link) | [Communication process with the Siemens scanner] | Hui Xue ? 
 
 ### Day 3 : Programming lessons
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 25, 2019 | 14:00-15:00 | [link](https://link) | [Protyping at the scanner with
-Matlab ] | Oliver Josephs
+June 25, 2019 | 14:00-15:00 | [link](https://link) | [Protyping at the scanner with Matlab ] | Oliver Josephs ? , Aurelien? , Stan  ? 
 June 25, 2019 | 15:00-16:30 | [link](https://link) | [ ] |  
 June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |  
 
 
 # Detailled Agenda
 
-
+Connection procedures is available [here](live-session.md).  
 
 
 # Test the Ismrmrd and Gadgetron installation in advance
@@ -52,7 +49,7 @@ June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |
 > [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 
 Since all participants are working at home on their own computer, we asked the participants to test their Ismrmrd and Gadgetron installation in advance. 
-Detailed installation instructions are available [here](gt-installation.md).
+Detailed installation instructions has been summarized [here](gt-installation.md).  
 
 Feel free to contact us and to post any inquiries on the gadegtron [forum](https://groups.google.com/forum/#!forum/gadgetron)
 
