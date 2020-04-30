@@ -46,19 +46,28 @@ June 25, 2019 | 15:00-16:30 | [link](https://link) | [ ] |
 June 25, 2019 | 16:00-17:00 | [link](https://link) | [ ] |  
 
 
-## Detailled Agenda
+## Participate to Online Course Agenda (Preparation and Modalities)
 
-Connection procedures is available [here](live-session.md).  
-	
+> <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
+> Note that this course is based on the following teaching material: 
+
+To achieve good interaction between lecturers and participants - and especially tutors and participants in the work in progress sessions - we (lecturers and participants) have preparation for the online course. 
+
+Preparation list is available [here] (https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Preparation).
+
+Information to follow the in conference is available [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Interactive-Session). 	
+
 
 ## Website Structure
 
-All information will be written in a README file in each directories. Additionnal contents like data, codes, powerpoint will be upload in the material folder for each lectures 
+All information will be written in a README file in each directories. Additionnal contents like data, codes, powerpoint will be uploaded or indicated in the material folder for each lectures 
 
 Installation
 └── README.md
+
 Interactive-Session
 └── README.md
+
 Material
 ├── Day1
 │   ├── Lecture1
@@ -67,7 +76,9 @@ Material
 │   └── Lecture3
 ├── Day2
 └── Day3
+
 README.md 
+
 Visio-Modalities
 └── README.md
 
@@ -78,9 +89,10 @@ Visio-Modalities
 > Note that this course is based on the following teaching material: 
 > [link](http://gadgetron.github.io/tutorial/) 
 > [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
+> Running on of them before is highly recommended
 
 Since all participants are working at home on their own computer, we asked the participants to test their Ismrmrd and Gadgetron installation in advance. 
-Detailed installation instructions has been summarized [here](gt-installation.md).  
+Detailed installation instructions has been summarized [here](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Installation).  
 
 Feel free to contact us and to post any inquiries on the gadegtron [forum](https://groups.google.com/forum/#!forum/gadgetron)
 
@@ -107,9 +119,8 @@ This [gentle introduction to Gadgetron](introduction-part1.md) explains .
 
 ### 1.3 - Basic reconstruction using Python  (16:00 -> 17:00 CEST)
 
-The primary goal of this [lesson]( ) introduces the python gadget and the ismsmrd-python-toolboxes
- that contains various toolboxes dedicated to common issues. Its different submodules correspond to different
-applications, such as fourier transfrom, coil sensitivity map estimation, grappa reconstruction, etc.
+The primary goal of this [lecture](https://github.com/gadgetron/GadgetronOnlineClass/tree/master/Material/Day1/Lecture3) introduces the python gadget and the ismsmrd-python-toolboxes
+ that contains various toolboxes dedicated to common issues. Its different submodules correspond to different applications, such as fourier transfrom, coil sensitivity map estimation, grappa reconstruction, etc.
 
 **See also**:
 
