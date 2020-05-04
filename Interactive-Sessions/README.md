@@ -1,12 +1,12 @@
 # Interactive-Session
 
-Originally named "bring your twix data", this session was designed to help the participants to deal with their kspace data. While ISMRMRD and Gadgetron covers many generic reconstructions like cartesian, radial, sprial, lots of implementations (less standard or more recent) are lacking. Additionnaly, suitable conversion of kspace data from main MRI vendor format is possible but some modification might be needed for new sequence.
+Originally named "bring your twix data", this session was designed to help the participants to deal with their kspace data. While MRD and Gadgetron covers many generic reconstructions like cartesian, radial, sprial, lots of implementations (less standard or more recent) are lacking. Additionnaly, suitable conversion of kspace data from main MRI vendor format is possible but some modification might be needed for new sequence.
 
 If you need some help to convert and organize your kspace data before working on your reconstruction, Interactive-Session is a good place to start. 
 
 ## How to participate ?
 
-* Step 1: upload your data to [Zenodo](https://zenodo.org/)
+* Step 1: upload your data to [Zenodo](https://zenodo.org/) in MRD file format or in the vendor  format 
 
 * Step 2: open an [issue](https://github.com/gadgetron/GadgetronOnlineClass/issues) that describe your submission. Please follow the template of the first issue mentionning:
     
@@ -18,7 +18,7 @@ If you need some help to convert and organize your kspace data before working on
     - Description (5 lines) : 
 
 
-* Step 3: Work in progress session about 1 or 2h will be organized with experience users of ISMRMRD and Gadgetron to help you managing the kspace data or answer your question. 
+* Step 3: Work in progress session about 1 or 2h will be organized with experience users of MRD and Gadgetron to help you managing the kspace data or answer your question. 
 
 
 > <img src="https://img.shields.io/badge/-important-red"/>

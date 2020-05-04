@@ -1,6 +1,6 @@
 # Installation procedure
 
-This document should first summarize how to install ISMRMRD and Gadgetron depending of the OS.
+This document should first summarize how to install MRD and Gadgetron depending of the OS.
 
 Follow by a precise description of the procedure or a link to a procedure 
 
