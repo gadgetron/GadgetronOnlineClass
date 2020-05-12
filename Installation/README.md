@@ -42,4 +42,9 @@ Compiling Gadgetron from sources is the traditional method of installation. It s
 
 ## Potential issue
 
+### add-apt-repository: command not found
 
+Fresh Ubutnu installations might not come with the `add-apt-repository` command installed. It's part of the `software-properties-common` package, and can simply be installed: 
+```bash
+sudo apt-get install software-properties-common
+```
