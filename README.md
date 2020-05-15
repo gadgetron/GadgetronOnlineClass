@@ -1,10 +1,10 @@
 # GadgetronOnlineClass
 
-During June 2020 we will host the “GadgetronOnlineClass”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online. 
+During June 2020 we will host the “**GadgetronOnlineClass**”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online. 
 
-This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The online course will also provide examples of how to use the vendor-agnostic MRD file format (formerly “ISMRMRD”) for your custom reconstructions.
+This course is aimed at both new and experienced users of **Gadgetron**, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The online course will also provide examples of how to use the vendor-agnostic **MRD** file format (formerly “**ISMRMRD**”) for your custom reconstructions.
 
-The course is organised remotely and will be accessible in live via **visio-conference**. In addition of the course and pratical course, participants will have the possibility to propose work on a MRI reconstruction topic during **interactive session** with the speakers. Please, go to this [page](Interactive-Sessions) for more information, we encourage you to apply.
+The course is organised remotely and will be accessible in live via **videoconference**. In addition of the course and pratical course, participants will have the possibility to propose work on a MRI reconstruction topic during **interactive session** with the speakers. Please, go to this [page](Interactive-Sessions) for more information, we encourage you to apply.
 
 The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
@@ -14,7 +14,7 @@ Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roop
 
 ## Registration
 
-Please follow the [registration link](https://gadgetron2020.sciencesconf.org/registration). Registration is free. We will use the platform dedicated to the iniial summer school for the registration process and email communication. Otherwise please refer to the GitHub website [GadgetronOnlineClass](https://github.com/gadgetron/GadgetronOnlineClass). Thanks for your comprehension.
+Please follow the [registration link](https://gadgetron2020.sciencesconf.org/registration). Registration is free. We will use the platform dedicated to the initial summer school for the registration process and email communication. Otherwise please refer to the GitHub website [GadgetronOnlineClass](https://github.com/gadgetron/GadgetronOnlineClass). Thanks for your comprehension.
 
 ## Agenda
 
