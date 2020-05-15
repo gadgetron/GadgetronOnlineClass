@@ -1,10 +1,10 @@
 # GadgetronOnlineClass
 
-During June 2020 we will host the “GadgetronOnlineClass”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online. 
+During June 2020 we will host the “**GadgetronOnlineClass**”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online. 
 
-This course is aimed at both new and experienced users of Gadgetron, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The online course will also provide examples of how to use the vendor-agnostic MRD file format (formerly “ISMRMRD”) for your custom reconstructions.
+This course is aimed at both new and experienced users of **Gadgetron**, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The online course will also provide examples of how to use the vendor-agnostic **MRD** file format (formerly “**ISMRMRD**”) for your custom reconstructions.
 
-The course is organised remotely and will be accessible in live via **visio-conference**. In addition of the course and pratical course, participants will have the possibility to propose work on a MRI reconstruction topic during **interactive session** with the speakers. Please, go to this [page](Interactive-Sessions) for more information, we encourage you to apply.
+The course is organised remotely and will be accessible in live via **videoconference**. In addition of the course and pratical course, participants will have the possibility to propose work on a MRI reconstruction topic during **interactive session** with the speakers. Please, go to this [page](Interactive-Sessions) for more information, we encourage you to apply.
 
 The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
@@ -14,7 +14,7 @@ Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roop
 
 ## Registration
 
-Please follow the [registration link](https://gadgetron2020.sciencesconf.org/registration). Registration is free. We will use the platform dedicated to the iniial summer school for the registration process and email communication. Otherwise please refer to the GitHub website [GadgetronOnlineClass](https://github.com/gadgetron/GadgetronOnlineClass). Thanks for your comprehension.
+Please follow the [registration link](https://gadgetron2020.sciencesconf.org/registration). Registration is free. We will use the platform dedicated to the initial summer school for the registration process and email communication. Otherwise please refer to the GitHub website [GadgetronOnlineClass](https://github.com/gadgetron/GadgetronOnlineClass). Thanks for your comprehension.
 
 ## Agenda
 
@@ -28,27 +28,34 @@ Date  | Time | Link | Topic | Tutor
 June 11, 2020 | 14:00-15:00 | [link](Courses/Day1/Lecture1) | [Gadgetron, a high level overview introduction] | David Hansen
 June 11, 2020 | 15:00-16:00 | [link](Courses/Day1/Lecture2) | [Gadgetron, a low level overview introduction] | Kristoffer Knudsen
 June 11, 2020 | 16:00-17:00 | [link](Courses/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
+June 11, 2020 | 17:00-18:00 | [link](Courses/Day1/QandA) | [Q&A] | Everybody
 
-### Day 2 : MRD, a vendor-agnostic file format for MRI reconstruction
+### Day 2 : MRD, a vendor-agnostic file format for MRI reconstruction (or toward the scanner room) 
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 18, 2020 | 14:00-15:00 | [link](Courses/Day2/Lecture1) | [MRD Part 1: Introduction] | Maxime Yon  
-June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [MRD Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai & John
-June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue , Pierre ? 
-
+June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [MRD Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai Roopchansinghv & John Derbyshire
+June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue 
+June 18, 2020 | 17:00-18:00 | [link](Courses/Day2/QandA) | [Q&A] | Everybody
+ 
 ### Day 3 : Foreign-Language-Interface 
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 25, 2020 | 14:00-15:00 | [link](https://link) | [Foreign-Language-Interface ] | Kristoffer Knudsen
-June 25, 2020 | 15:00-16:30 | [link](https://link) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs ?  
-June 25, 2020 | 16:00-17:00 | [link](https://link) | [Protyping at the scanner with MATLAB part 2] | Aurelien ? Stan ?  
+June 25, 2020 | 14:00-15:00 | [link](Courses/Day3/Lecture1) | [Foreign-Language-Interface ] | Kristoffer Knudsen
+June 25, 2020 | 15:00-16:30 | [link](Courses/Day3/Lecture2) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs  
+June 25, 2020 | 16:00-17:00 | [link](Courses/Day3/Lecture3) | [Protyping at the scanner with MATLAB part 2] | Aurelien Trotier & Stan Rapacchi 
+June 25, 2020 | 17:00-18:00 | [link](Courses/Day3/QandA) | [Q&A] | Everybody
 
 ### Day 4 : C++ 
 
-To be annouced later in the year
-
+Date  | Time | Place | Topic | Tutor
+----- | ---- | ----- | ----- | -----
+July 2, 2020 | 14:00-15:00 | [link](Courses/Day4/Lecture1) | [How to write a C++ Gadget ] | David Hansen & Kristoffer Knudsen
+July 2, 2020 | 15:00-16:30 | [link](Courses/Day4/Lecture2) | [The Generic Cartesian Chain and toolboxes] | Hui Xue
+July 2, 2020 | 16:00-17:00 | [link](Courses/Day4/Lecture3) | [To be announced] | Adrienne Campbell 
+July 2, 2020 | 17:00-18:00 | [link](Courses/Day4/QandA) | [Q&A] | Everybody
 
 ## Participate to Online Course Agenda (Preparation and Modalities)
 
@@ -130,9 +137,9 @@ The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python 
   * []()
   * []()
 
+### 1.4 - Basic reconstruction using Python  (17:00 -> 18:00 CEST)
 
-
-## 2. Toward the scanner room  (day 2: June 18th)
+## 2. MRD, a vendor-agnostic file format for MRI reconstruction (or toward the scanner room)   (day 2: June 18th)
 
 ### 2.1 - Title  (  )
 
@@ -144,7 +151,17 @@ This [lesson](Courses/Day2/Lecture1) introduces ...
   * [ ]( )
 
 
-### 2.1 - Title  (  )
+### 2.2 - Title  (  )
+
+This [lesson](Courses/Day2/Lecture2) introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
+
+
+### 2.2 - Title  (  )
 
 This [lesson]() introduces ...
 
@@ -154,7 +171,29 @@ This [lesson]() introduces ...
   * [ ]( )
 
 
-### 2.1 - Title  (  )
+## 3. Foreign-Language-Interface  (day 2: June 25th)
+
+### 3.1 - Title  (  )
+
+This [lesson](Courses/Day3/Lecture1) introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
+
+
+### 3.2 - Title  (  )
+
+This [lesson](Courses/Day3/Lecture2) introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
+
+
+### 3.3 - Title  (  )
 
 This [lesson]() introduces ...
 
@@ -165,6 +204,36 @@ This [lesson]() introduces ...
 
 
 
+## 4. C++  (day 4: July 2nd)
+
+### 4.1 - Title  (  )
+
+This [lesson](Courses/Day3/Lecture1) introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
+
+
+### 4.1 - Title  (  )
+
+This [lesson](Courses/Day3/Lecture2) introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
+
+
+### 4.1 - Title  (  )
+
+This [lesson]() introduces ...
+
+**See also**:
+
+  * [ ]( )
+  * [ ]( )
 
 
 
