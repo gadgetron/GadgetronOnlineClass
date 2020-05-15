@@ -41,9 +41,9 @@ June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication pro
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 25, 2019 | 14:00-15:00 | [link](https://link) | [Foreign-Language-Interface ] | Kristoffer Knudsen
-June 25, 2019 | 15:00-16:30 | [link](https://link) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs ?  
-June 25, 2019 | 16:00-17:00 | [link](https://link) | [Protyping at the scanner with MATLAB part 2] | Aurelien ? Stan ?  
+June 25, 2020 | 14:00-15:00 | [link](https://link) | [Foreign-Language-Interface ] | Kristoffer Knudsen
+June 25, 2020 | 15:00-16:30 | [link](https://link) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs ?  
+June 25, 2020 | 16:00-17:00 | [link](https://link) | [Protyping at the scanner with MATLAB part 2] | Aurelien ? Stan ?  
 
 ### Day 4 : C++ 
 
