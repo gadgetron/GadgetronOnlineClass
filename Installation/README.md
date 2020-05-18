@@ -50,8 +50,6 @@ Once the container has been downloaded and installed into the user's Docker envi
 
 and interact with the running container using any of Docker's standard suite of command line tools.
 
-*Note: Stay tuned for more detailed instructions.*
-
 ## Installing from Source Code
 
 Compiling Gadgetron from sources is the traditional method of installation. It should be reasonably easy on most Linux distributions. You can find detailed instructions [here](https://github.com/gadgetron/gadgetron/wiki/Linux-Installation-(Gadgetron-4)). 
