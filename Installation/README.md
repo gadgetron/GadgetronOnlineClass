@@ -32,9 +32,23 @@ Install Ubuntu 18.04 or 20.04, and follow the instructions above to complete you
 
 ## Mac OS 
 
-Gadgetron doesn't currently build on Mac OS. You best option is probably to run Gadgetron in a docker container. 
+Gadgetron doesn't currently build on Mac OS.  You may try MacPorts or HomeBrew.  However, users should have better luck with the following options:
 
-*Note: Stay tuned for more detailed instructions.*
+- Software such as Parallels, VirtualBox, etc., can be used to install a Ubuntu virtual machine (VM), then install Gadgetron into that Ubuntu VM, as detailed above for the native Ubuntu installation.
+
+- Alternatively, Docker Desktop Community Edition for Mac can be used to downloand and install a Gadgetron Docker container.  After the Docker software installation is complete, and a network connection is available, the Gadgetron Docker container is installed by running the command:
+
+```
+   docker pull gadgetron/ubuntu_2004
+```
+
+Once the container has been downloaded and installed into the user's Docker environment, the user should then be able to launch it as they would any other container, for example:
+
+```
+   docker run gtLocal gadgetron/ubuntu_2004
+```
+
+and interact with the running container using any of Docker's standard suite of command line tools.
 
 ## Installing from Source Code
 
