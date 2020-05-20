@@ -252,4 +252,33 @@ This [lesson]() introduces ...
 
 
 
-<!---------------------------------------------------------------------------->
+<!----------------------------- External links ------------------------------->
+
+
+The driving themes of the Gadgetron are notably cardiac imaging, interventional imaging, MR-PET imaging, high field and low field imaging. Here are some works done using the Gadgetron.  The list is non-exhaustive.
+
+* kt-SENSE, non-Cartesian, iterative SENSE, sequence: golden angle radial bSSFP projections. [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-P329)
+* 3D l1-SPIRiT Reconstruction on Gadgetron based Cloud. [link](http://www.forskningsdatabasen.dk/en/catalog/2389264072)
+* Integration of the BART into Gadgetron for Inline Cloud-Based Reconstruction. [link](http://archive.ismrm.org/2018/2861.html)
+* MR Fingerprinting using a Gadgetron-based reconstruction . [link](http://archive.ismrm.org/2018/3525.html)
+* Cardiac MR Fingerprinting in Gadgetron for Online Reconstruction. [link](http://archive.ismrm.org/2018/3525.html)
+* TPVM Tissue Phase velocity mapping, Spiral trajectory. [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-16-S1-W31)
+* Spiral imaging with off-resonance reconstruction. [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-P216)
+* 4D DCE MRI, Free-Breathing Liver Perfusion. Spiral trajectory + GRAPPA. [link](http://archive.ismrm.org/2018/5640.html)
+* SMS T1 mapping. . [link](https://hal-amu.archives-ouvertes.fr/hal-01784726/document)
+* Multi-vendor Hyperpolarised 13C analysis . [link](https://www.forskningsdatabasen.dk/en/catalog/2284922562)
+* Full Free-Breathing Protocol for CMR. [link](https://link.springer.com/article/10.1186/1532-429X-18-S1-P313)
+* In-line cardiac perfusion mapping [link](https://heart.bmj.com/content/103/Suppl_1/A4.1?utm_source=trendmd&utm_medium=cpc&utm_campaign=heart&utm_content=consumer&utm_term=1-B), [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-W8), [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/2979.html)
+* In-line cardiac perfusion and deep learning [link](https://arxiv.org/abs/1910.07122)
+* MR-PER imaging : SIRF [link](https://www.sciencedirect.com/science/article/pii/S0010465519303984)
+* MR-PET imaging : respiratory and cardiac motion correction, reco: joint Compressed Sensing reconstruction. [link](https://www.ncbi.nlm.nih.gov/pubmed/28800546)
+* MR-PET imaging : 4D CBCT-based proton dose calculation. [link](https://www.ncbi.nlm.nih.gov/pubmed/30448049)
+* Temperature mapping. [link](https://www.ncbi.nlm.nih.gov/pubmed/26899165), [link](https://www.sciencedirect.com/science/article/pii/S0730725X19306605)
+* ARFI: sequence single-shot gradient EPI, reco GRAPPA. [link](https://www.ncbi.nlm.nih.gov/pubmed/28090656)
+* Highly accelerated cardiac cine : bFISTA‐SPIRiT et bFISTA‐SENSE. [link](https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.26224)
+* Low field magnetic resonance imaging scanner for cardiac imaging. [link](https://patents.google.com/patent/US20180259604A1/en)
+* Augmented Reality [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/0598.html), [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/3417.html)
+* Cardiac diffusion, GRAPPA. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/4767.html)
+* Neuro Diffusion,3D multi-shot-EPI avec PF. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/2129.html)
+* Coronary magnetic resonance angiography, variable density sampling + Compress Sensing. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/0918.html)
+
