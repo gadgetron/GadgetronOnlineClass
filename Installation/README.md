@@ -1,6 +1,6 @@
 # Installation Procedure
 
-To install Gadgetron, it has traditionally been necessary to compile the source code. And while this is still an option (see below), we do reccomend that you take a look at the precompiled packages available through the Gradient Software PPA. This makes the Gadgetron software suite available on Ubuntu through the package manager.   
+To install Gadgetron, it has traditionally been necessary to compile the source code. And while this is still an option (see below), we do reccomend that you take a look at the precompiled packages available in the Gradient Software PPA. This makes the Gadgetron software suite available on Ubuntu through the package manager.   
 
 ## Ubuntu
 
