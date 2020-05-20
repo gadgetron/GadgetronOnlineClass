@@ -10,17 +10,17 @@ sudo add-apt-repository ppa:gradient-software/experimental
 sudo apt-get update
 ```
 
-Installing Gadgetron is then merely a matter of requesting it from your package manager:
+Gadgetron (and related software) can then be installed using the package manager:
 ```bash
 sudo apt-get install gadgetron-all
 ```
 
-If you plan to use the Python modules included with Gadgetron, please install the Python Gadgetron interface as well: 
+It is also recommended that you install the Python interface:
 ```bash
 pip3 install --user gadgetron
 ```
 
-*Note: I'm still working on the PPA, so it might not be working just yet. -KLK*
+If you have Matlab, and intend to use it with Gadgetron, you can install the Gadgetron Matlab interface by searching for 'gadgetron' in the Add-Ons manager in Matlab. 
 
 ## Windows
 
