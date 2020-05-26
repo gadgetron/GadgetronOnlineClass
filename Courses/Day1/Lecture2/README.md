@@ -1,4 +1,14 @@
-# Lecture 2 : Practical Introduction to Gadgetron [WiP]Title : Practical Introduction to GadgetronSchedule : June 11, 2020 | 15:00-16:00 Speaker: Kristoffer Langeland Knudsen## Summary - [Running Gadgetron Reconstructions]
+# Lecture 2 : Practical Introduction to Gadgetron [WiP]
+
+Title : Practical Introduction to Gadgetron
+
+Schedule : June 11, 2020 | 15:00-16:00 
+
+Speaker: Kristoffer Langeland Knudsen
+
+## Summary
+
+ - [Running Gadgetron Reconstructions]
    - [The Gadgetron Server] Introduction to the Gadgetron process. 
    - [The Gadgetron Client] Introduction to the Gadgetron MRD client in particular, and MRD clients in general. 
    - [Controlling Gadgetron]
@@ -23,7 +33,9 @@
    - [The Gadgetron Wiki] 
    - [The Google Group]
    - [Asking Questions]
-   - [Reading the Source]If time permits: 
+   - [Reading the Source]
+   
+If time permits: 
  - [DEMO: Flesh out the Reconstruction]
    - [NoiseAdjustGadget]
    - [RemoveOOversamplingGadget]
