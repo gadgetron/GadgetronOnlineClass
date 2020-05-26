@@ -25,8 +25,8 @@ Please follow the [registration link](https://gadgetron2020.sciencesconf.org/reg
 
 Date  | Time | Link | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 11, 2020 | 14:00-15:00 | [link](Courses/Day1/Lecture1) | [Gadgetron, a high level overview introduction] | David Hansen
-June 11, 2020 | 15:00-16:00 | [link](Courses/Day1/Lecture2) | [Gadgetron, a low level overview introduction] | Kristoffer Knudsen
+June 11, 2020 | 14:00-15:00 | [link](Courses/Day1/Lecture1) | [A tour of Gadgetron] | David Hansen
+June 11, 2020 | 15:00-16:00 | [link](Courses/Day1/Lecture2) | [Practical introduction to Gadgetron] | Kristoffer Knudsen
 June 11, 2020 | 16:00-17:00 | [link](Courses/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
 June 11, 2020 | 17:00-18:00 | [link](Courses/Day1/QandA) | [Q&A] | Everybody
 
