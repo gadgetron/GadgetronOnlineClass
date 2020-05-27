@@ -7,6 +7,9 @@ import ismrmrd
 import matplotlib.pyplot as plt
 
 
+def EmptyPythonGadget(connection):
+
+
 
 def EmptyPythonGadget(connection):
    counter=0

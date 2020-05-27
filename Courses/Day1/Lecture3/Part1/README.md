@@ -126,7 +126,7 @@ mkdir GT_Lecture3
 cd GT_Lecture3
 ```
 
-Create the file my_first_python_gadget.py then copy the previous class. 
+Create the file my_first_python_gadget.py then copy the previous function. 
 
 ```
 We can add the following text before connection.send() that we are going through it.
@@ -139,38 +139,42 @@ print("so far, so good")
 We will now create a new xml file named `external_python_tutorial.xml`. Add the following content into `external_python_tutorial.xml`
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<gadgetronStreamConfiguration xsi:schemaLocation="http://gadgetron.sf.net/gadgetron gadgetron.xsd"
-        xmlns="http://gadgetron.sf.net/gadgetron"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <version>2</version>
 
-    <!--
-        Gadgetron generic recon chain for 2D and 3D cartesian sampling
-        
-    -->
+    <readers>
+        <reader>
+            <dll>gadgetron_core_readers</dll>
+            <classname>AcquisitionReader</classname>
+        </reader>
+        <reader>
+            <dll>gadgetron_core_readers</dll>
+            <classname>WaveformReader</classname>
+        </reader>
+    </readers>
 
-    <!-- reader -->
-    <reader><slot>1008</slot><dll>gadgetron_mricore</dll><classname>GadgetIsmrmrdAcquisitionMessageReader</classname></reader>
-    <reader><slot>1026</slot><dll>gadgetron_mricore</dll><classname>GadgetIsmrmrdWaveformMessageReader</classname></reader>
+    <writers>
+        <writer>
+            <dll>gadgetron_core_writers</dll>
+            <classname>ImageWriter</classname>
+        </writer>
+    </writers>
 
-    <!-- writer -->
-    <writer><slot>1022</slot><dll>gadgetron_mricore</dll><classname>MRIImageWriter</classname></writer>
+  
 
-    
-
-
-</gadgetronStreamConfiguration>
+</configuration>
 ```
 
 To call our gadget, we have to add it to the reconstruction chain which is currently empty. For this add the following lines after the `` MRIImageWriter``
 
 ```xml
-<stream>  
+  <stream>  
         <external>
             <execute name="my_first_python_gadget" target="EmptyPythonGadget" type="python"/>
             <configuration/>
         </external> 
-</stream>
+    </stream>
 ```
 
 ### Compilation and installation 

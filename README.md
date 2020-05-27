@@ -242,18 +242,14 @@ This [lesson]() introduces ...
 
 
 
-<!----------------------------- External links ------------------------------->
+## External links 
+
 [Git]:        https://git-scm.com
 [Docker]:     https://docs.docker.com/get-docker/
 [Python]:     http://www.python.org
 [Numpy]:      http://www.numpy.org
 [Scipy]:      http://www.scipy.org
 [Matplotlib]: http://matplotlib.org
-
-
-
-<!----------------------------- External links ------------------------------->
-
 
 The driving themes of the Gadgetron are notably cardiac imaging, interventional imaging, MR-PET imaging, high field and low field imaging. Here are some works done using the Gadgetron.  The list is non-exhaustive.
 
@@ -265,7 +261,7 @@ The driving themes of the Gadgetron are notably cardiac imaging, interventional 
 * TPVM Tissue Phase velocity mapping, Spiral trajectory. [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-16-S1-W31)
 * Spiral imaging with off-resonance reconstruction. [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-P216)
 * 4D DCE MRI, Free-Breathing Liver Perfusion. Spiral trajectory + GRAPPA. [link](http://archive.ismrm.org/2018/5640.html)
-* SMS T1 mapping. . [link](https://hal-amu.archives-ouvertes.fr/hal-01784726/document)
+* SMS T1 mapping. [link](https://hal-amu.archives-ouvertes.fr/hal-01784726/document)
 * Multi-vendor Hyperpolarised 13C analysis . [link](https://www.forskningsdatabasen.dk/en/catalog/2284922562)
 * Full Free-Breathing Protocol for CMR. [link](https://link.springer.com/article/10.1186/1532-429X-18-S1-P313)
 * In-line cardiac perfusion mapping [link](https://heart.bmj.com/content/103/Suppl_1/A4.1?utm_source=trendmd&utm_medium=cpc&utm_campaign=heart&utm_content=consumer&utm_term=1-B), [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-W8), [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/2979.html)
