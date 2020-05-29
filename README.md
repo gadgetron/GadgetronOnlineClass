@@ -81,6 +81,8 @@ All information will be written in a README file in each directories. Additionna
 │   │   └── Lecture3
 │   │       └── README.md
 │   ├── Day2
+│   │   ├── Lecture2
+│   │   │   └── README.md
 │   └── Day3
 ├── Installation
 │   └── README.md
