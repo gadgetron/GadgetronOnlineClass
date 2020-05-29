@@ -52,7 +52,7 @@ June 25, 2020 | 17:00-18:00 | [link](Courses/Day3/QandA) | [Q&A] | Everybody
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-July 2, 2020 | 14:00-15:00 | [link](Courses/Day4/Lecture1) | [How to write a C++ Gadget ] | David Hansen & Kristoffer Knudsen
+July 2, 2020 | 14:00-15:00 | [link](Courses/Day4/Lecture1) | [How to write a C++ Gadget ] | David Hansen
 July 2, 2020 | 15:00-16:30 | [link](Courses/Day4/Lecture2) | [The Generic Cartesian Chain and toolboxes] | Hui Xue
 July 2, 2020 | 16:00-17:00 | [link](Courses/Day4/Lecture3) | [To be announced] | Adrienne Campbell 
 July 2, 2020 | 17:00-18:00 | [link](Courses/Day4/QandA) | [Q&A] | Everybody
