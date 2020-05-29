@@ -35,7 +35,7 @@ June 11, 2020 | 17:00-18:00 | [link](Courses/Day1/QandA) | [Q&A] | Everybody
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 18, 2020 | 14:00-15:00 | [link](Courses/Day2/Lecture1) | [MRD Part 1: Introduction] | Maxime Yon  
-June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [MRD Part 2: Xml style sheet : Siemens/GE/Bruker conversion] | Vinai Roopchansinghv & John Derbyshire
+June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [MRD Part 2: ]Siemens/GE/Bruker raw data conversion to MRD through XML style sheets, and working with HDF5 files] | Vinai Roopchansingh & J. Andrew Derbyshire
 June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue 
 June 18, 2020 | 17:00-18:00 | [link](Courses/Day2/QandA) | [Q&A] | Everybody
  
@@ -151,17 +151,18 @@ This [lesson](Courses/Day2/Lecture1) introduces ...
   * [ ]( )
 
 
-### 2.2 - Title  (  )
+### 2.2 - Siemens/GE/Bruker raw data conversion to MRD through XML style sheets, and working with HDF5 files
 
-This [lesson](Courses/Day2/Lecture2) introduces ...
+This session discusses how the conversion process in ISMRMRD utilizes style sheets to convert the vendors' proprietary formats and data values to the fully and openly documented ISMRMRD format.  There will also be an interactive demonstration of working with HDF5 files in a Jupyter notebook environment with
+Python 3.
 
 **See also**:
 
-  * [ ]( )
-  * [ ]( )
+  * [HDF5 for Python](https://www.h5py.org)
+  * [Juypter Notebooks](https://jupyter.org)
 
 
-### 2.2 - Title  (  )
+### 2.3 - Title  (  )
 
 This [lesson]() introduces ...
 
