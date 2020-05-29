@@ -110,9 +110,7 @@ Feel free to contact us and to post any inquiries on the gadegtron [forum](https
 
 ### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 15:00 CEST)
 
-This [lecture](introduction-part1.md) does not attempt to be comprehensive and cover every single feature, or even every commonly used feature. Instead, it introduces many of Gadgetron's most
-noteworthy features, and will give you a good idea of the Gadgetron's capability and
-usage.
+This [lecture](introduction-part1.md) does not attempt to be comprehensive and cover every single feature, or even every commonly used feature. Instead, it introduces many of Gadgetron's most noteworthy features, and will give you a good idea of Gadgetron's capability and usage.
 
 **See also**:
 
@@ -121,11 +119,13 @@ usage.
 
 ### 1.2 - Introduction (15:00 -> 16:00 CEST)
 
-This [gentle introduction to Gadgetron](introduction-part1.md) explains 
+This [lecture](Coureses/Day1/Lecture2) is a Practical Introduction to Gadgetron. It takes a very hand-on approach to getting started with Gadgetron, aimed at giving new users the information they need to assemble and run their own reconstructions using Gadgetron.
+
+This lecture will cover starting and running Gadgetron, controlling Gadgetron behaviour through configuration files, and provide a sensible introduction to a handful of very common Gadgets. 
 
 **See also**:
 
- * [Wiki](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Streaming-Architecture)
+ * [Gadgetron Hello World](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 
 ### 1.3 - Basic reconstruction using Python  (16:00 -> 17:00 CEST)
 
