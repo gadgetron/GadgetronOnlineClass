@@ -70,4 +70,22 @@ Fresh Ubutnu installations might not come with the `add-apt-repository` command 
 sudo apt-get install software-properties-common
 ```
 
+### pip3: command not found
 
+If you have not done a lot of Python work, you might not have pip install (it's a package manager for Python).
+```bash
+sudo apt-get install python3-pip
+```
+
+### Integrating Matlab running in Windows with Gadgetron in WSL
+
+The Gadgetron Foreign Language interface will look on your PATH to find `matlab` in order to start a Matlab process. If you are not keen on installing Matlab in you WSL instance, you can add a simple script to run your Windows native Matlab in stead. 
+
+Add the following to a file called 'matlab', and place it somewhere on the Ubuntu path (`~/.local/bin` will do). Run `chmod u+x matlab` to mark the script as executable. 
+```bash
+#!/bin/bash
+export WSLENV=GADGETRON_EXTERNAL_PORT:GADGETRON_EXTERNAL_MODULE
+matlab.exe $@
+```
+
+Test the script by typing entering `matlab` in a terminal - your Windows Matlab should start as a result. If it does not, you might have to make sure `matlab.exe` is on your Windows [path](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).  
