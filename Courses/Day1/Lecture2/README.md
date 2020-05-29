@@ -1,4 +1,6 @@
-# Lecture 2 : Practical Introduction to Gadgetron [WiP]
+# Lecture 1.2 : Practical Introduction to Gadgetron
+
+*Note: This is a work in progress, and the summary is preliminary.* 
 
 Title : Practical Introduction to Gadgetron
 
