@@ -28,7 +28,7 @@ Date  | Time | Link | Topic | Tutor
 June 11, 2020 | 13:45-14:00 | [----] | [Welcome] | Valéry Ozenne
 June 11, 2020 | 14:00-14:30 | [link](Courses/Day1/Lecture1) | [A tour of Gadgetron] | David Hansen
 June 11, 2020 | 14:30-15:30 | [link](Courses/Day1/Lecture2) | [Practical introduction to Gadgetron] | Kristoffer Knudsen
-June 11, 2020 | 15:30-15:40 | [----]( ) | [Break]
+June 11, 2020 | 15:30-15:40 | [----] | [Break]
 June 11, 2020 | 15:40-17:00 | [link](Courses/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
 June 11, 2020 | 17:00-18:00 | [link](Courses/Day1/QandA) | [Q&A] | Everybody
 
