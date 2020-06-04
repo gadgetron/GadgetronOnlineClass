@@ -52,7 +52,7 @@ docker pull gadgetron/ubuntu_2004
 Once the container has been downloaded and installed into the user's Docker environment, the user should then be able to launch it as they would any other container, for example:
  
 ```
-docker run gtLocal gadgetron/ubuntu_2004
+docker run --name gtLocal gadgetron/ubuntu_2004
 ```
  
 and interact with the running container using any of Docker's standard suite of command line tools.
