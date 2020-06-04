@@ -10,7 +10,7 @@ The Gadgetron Online Course is made of several modules that constitute together 
 
 For any questions, feel to contact us on the [forum](https://groups.google.com/forum/#!forum/gadgetron) of Gagdetron or at gadgetron2020 /at/ sciencesconf.org
 
-Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Adrienne Campbell, Rajiv Ramasawmy, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
+Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Josephs, Vinai Roopchansingh, John Derbyshire, Adrienne Campbell, Rajiv Ramasawmy, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
 
 ## Registration
 
@@ -275,7 +275,7 @@ The driving themes of the Gadgetron are notably cardiac imaging, interventional 
 * Full Free-Breathing Protocol for CMR. [link](https://link.springer.com/article/10.1186/1532-429X-18-S1-P313)
 * In-line cardiac perfusion mapping [link](https://heart.bmj.com/content/103/Suppl_1/A4.1?utm_source=trendmd&utm_medium=cpc&utm_campaign=heart&utm_content=consumer&utm_term=1-B), [link](https://jcmr-online.biomedcentral.com/articles/10.1186/1532-429X-18-S1-W8), [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/2979.html)
 * In-line cardiac perfusion and deep learning [link](https://arxiv.org/abs/1910.07122)
-* MR-PER imaging : SIRF [link](https://www.sciencedirect.com/science/article/pii/S0010465519303984)
+* MR-PET imaging : SIRF [link](https://www.sciencedirect.com/science/article/pii/S0010465519303984)
 * MR-PET imaging : respiratory and cardiac motion correction, reco: joint Compressed Sensing reconstruction. [link](https://www.ncbi.nlm.nih.gov/pubmed/28800546)
 * MR-PET imaging : 4D CBCT-based proton dose calculation. [link](https://www.ncbi.nlm.nih.gov/pubmed/30448049)
 * Temperature mapping. [link](https://www.ncbi.nlm.nih.gov/pubmed/26899165), [link](https://www.sciencedirect.com/science/article/pii/S0730725X19306605)
