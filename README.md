@@ -10,7 +10,7 @@ The Gadgetron Online Course is made of several modules that constitute together 
 
 For any questions, feel to contact us on the [forum](https://groups.google.com/forum/#!forum/gadgetron) of Gagdetron or at gadgetron2020 /at/ sciencesconf.org
 
-Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
+Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Adrienne Campbell, Rajiv Ramasawmy, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
 
 ## Registration
 
