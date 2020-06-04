@@ -10,7 +10,7 @@ The Gadgetron Online Course is made of several modules that constitute together 
 
 For any questions, feel to contact us on the [forum](https://groups.google.com/forum/#!forum/gadgetron) of Gagdetron or at gadgetron2020 /at/ sciencesconf.org
 
-Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
+Organizers: David Hansen, Kristoffer Knudsen, Hui Xue, Oliver Joseph, Vinai Roopchansingh, John Derbyshire, Adrienne Campbell, Rajiv Ramasawmy, Aurélien Trotier, Stanislas Rapacchi, Maxime Yon, Pierre Bour, Valéry Ozenne
 
 ## Registration
 
@@ -112,7 +112,7 @@ Feel free to contact us and to post any inquiries on the gadegtron [forum](https
 
 ## 1. Introduction courses (day 1 : June 11th 2020)
 
-### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 15:00 CEST)
+### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 14:30 CEST)
 
 This [lecture](introduction-part1.md) does not attempt to be comprehensive and cover every single feature, or even every commonly used feature. Instead, it introduces many of Gadgetron's most noteworthy features, and will give you a good idea of Gadgetron's capability and usage.
 
@@ -121,7 +121,7 @@ This [lecture](introduction-part1.md) does not attempt to be comprehensive and c
  * [wiki](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Gadgets)
 
 
-### 1.2 - Introduction (15:00 -> 16:00 CEST)
+### 1.2 - Introduction (14:30 -> 15:30 CEST)
 
 This [lecture](Coureses/Day1/Lecture2) is a Practical Introduction to Gadgetron. It takes a very hand-on approach to getting started with Gadgetron, aimed at giving new users the information they need to assemble and run their own reconstructions using Gadgetron.
 
@@ -131,9 +131,13 @@ This lecture will cover starting and running Gadgetron, controlling Gadgetron be
 
  * [Gadgetron Hello World](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 
-### 1.3 - Basic reconstruction using Python  (16:00 -> 17:00 CEST)
+### 1.3 - Basic reconstruction using Python  (15:40 -> 17:00 CEST)
 
 The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python gadget and the ismsmrd-python-toolboxes that contains various toolboxes dedicated to common issues. Its different submodules correspond to different applications, such as fourier transfrom, coil sensitivity map estimation, grappa reconstruction, etc.
+
+### 1.4 - Q&A
+
+
 
 **See also**:
 
