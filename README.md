@@ -286,4 +286,5 @@ The driving themes of the Gadgetron are notably cardiac imaging, interventional 
 * Cardiac diffusion, GRAPPA. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/4767.html)
 * Neuro Diffusion,3D multi-shot-EPI avec PF. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/2129.html)
 * Coronary magnetic resonance angiography, variable density sampling + Compress Sensing. [link](https://index.mirasmart.com/ISMRM2018/PDFfiles/0918.html)
+* Real-time feedback 3DEPI fMRI, Matlab SENSE reconstruction [link](https://academic.oup.com/braincomms/advance-article/doi/10.1093/braincomms/fcaa049/5824291)
 
