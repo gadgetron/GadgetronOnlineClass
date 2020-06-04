@@ -119,7 +119,7 @@ It may or may not interact with the information contained in the message.
 
 ### Writing the gadget
 
-Create a new directory named `GT_Lecture3` and open two terminals at the location.
+Create a new directory named `GT_Lecture3` as you wish, for instance in `/home/participants/Documents/` and open two terminals at the location.
 
 ```
 mkdir GT_Lecture3
@@ -190,9 +190,12 @@ Start Gadgetron:
 $ gadgetron
 ```
 
+> <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
+> Note that the gadgetron must be launched in the folder where external_python_tutorial.xml and my_first_python_gadget.py as been edited.
+
 Run the ISMRMRD client: 
 ```bash 
-$ gadgetron_ismrmrd_client -f Data/meas_MID00026_FID49092_cmrr_12s_80p_MB0_GP0.h5  -C external_python_tutorial.xml
+$ gadgetron_ismrmrd_client -f path/to/meas_MID00026_FID49092_cmrr_12s_80p_MB0_GP0.h5  -C path/to/external_python_tutorial.xml
 ```
 
 You will see from the Gadgetron ISMRMRD client side :
@@ -319,7 +322,7 @@ Increase the selection
 connection.filter(lambda acq: acq.idx.repetition ==2 and acq.idx.slice ==0 and acq.is_flag_set(ismrmrd.ACQ_IS_REVERSE) and acq.is_flag_set(ismrmrd.ACQ_IS_PARALLEL_CALIBRATION))
 ```
 
-Pick then the dataset with ACS calibration and try again
+Pick then the dataset with ACS calibration: `path/to/meas_MID00030_FID49096_cmrr_12s_80p_MB0_GP2.h5` and try again
 
 
 ### Exercice 5 : Matplotlib & Ghost Niquist
@@ -327,7 +330,7 @@ Pick then the dataset with ACS calibration and try again
 Copy and paste the previous function and call it EpiPythonGadget.
 
 Usign the connection filter, filter the data with the FLAGS:ACQ_IS_PHASECORR_DATA 
-Pick only the first slice, you will see 9 lines using the fully sampled dataset:
+Pick only the first slice, you will see 9 lines using the fully sampled dataset: `path/to/meas_MID00026_FID49092_cmrr_12s_80p_MB0_GP0.h5`:
 
 ```python
  counter:  1  scan_counter:  2  slice:  0  rep:  0  e1:  32  segment:  1
@@ -420,12 +423,11 @@ print(np.shape(mybuffer[:,e1,e2,:]))
 ```
 
 There is an oversampling in readout direction by a factor of 2 in all Siemens acquisition.
-Use `np.transpose` to copy and paste the data
-
+Use `np.transpose` to buffer the data from `acquisition.data` in `mybuffer`.
 
 ### First Conclusion
 
-This conclude the lecure on readout. Note that standard kspace processing step (removeOversampling, ghost niquist and BO corrections for EPI, coil compression...) have already been developped in python or in C++. There is no need to redoo it except for educational purpose. 
+This conclude the lecture on readout. Note that standard kspace processing step (removeOversampling, ghost niquist and BO corrections for EPI, coil compression...) have already been developped in python or in C++. There is no need to redoo it except for educational purpose. 
 
 
 

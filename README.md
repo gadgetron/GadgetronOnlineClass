@@ -108,7 +108,7 @@ Feel free to contact us and to post any inquiries on the gadegtron [forum](https
 
 ## 1. Introduction courses (day 1 : June 11th 2020)
 
-### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 15:00 CEST)
+### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 14:30 CEST)
 
 This [lecture](introduction-part1.md) does not attempt to be comprehensive and cover every single feature, or even every commonly used feature. Instead, it introduces many of Gadgetron's most
 noteworthy features, and will give you a good idea of the Gadgetron's capability and
@@ -119,7 +119,7 @@ usage.
  * [wiki](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Gadgets)
 
 
-### 1.2 - Introduction (15:00 -> 16:00 CEST)
+### 1.2 - Introduction (14:30 -> 15:30 CEST)
 
 This [gentle introduction to Gadgetron](introduction-part1.md) explains 
 
@@ -127,9 +127,13 @@ This [gentle introduction to Gadgetron](introduction-part1.md) explains
 
  * [Wiki](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Streaming-Architecture)
 
-### 1.3 - Basic reconstruction using Python  (16:00 -> 17:00 CEST)
+### 1.3 - Basic reconstruction using Python  (15:40 -> 17:00 CEST)
 
 The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python gadget and the ismsmrd-python-toolboxes that contains various toolboxes dedicated to common issues. Its different submodules correspond to different applications, such as fourier transfrom, coil sensitivity map estimation, grappa reconstruction, etc.
+
+### 1.4 - Q&A
+
+
 
 **See also**:
 

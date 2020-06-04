@@ -112,7 +112,7 @@ import ismrmrd
 import logging
 import time
 
-def SimplePythonGadget(connection):
+def SimpleDataBufferedPythonGadget(connection):
    logging.info("Python reconstruction running - reading readout data")
    start = time.time()
    counter=0
@@ -205,7 +205,7 @@ We will now create a new xml file named `external_python_buffer_tutorial.xml`
      </gadget>
 
         <external>
-            <execute name="my_first_data_buffered_python_gadget" target="SimpleDataBufferedPythonGadget" type="python"/>
+            <execute name="my_first_buffered_data_gadget" target="SimpleDataBufferedPythonGadget" type="python"/>
             <configuration/>
         </external>
  

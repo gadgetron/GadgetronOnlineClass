@@ -73,7 +73,7 @@
      </gadget>
 
         <external>
-            <execute name="my_first_data_buffered_python_gadget" target="SimpleDataBufferedPythonGadget" type="python"/>
+            <execute name="my_first_buffered_data_gadget" target="SimpleBufferedDataPythonGadget" type="python"/>
             <configuration/>
         </external>
  
