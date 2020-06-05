@@ -1,3 +1,11 @@
+> <img src="https://img.shields.io/badge/-_Warning-red.svg?style=flat-square"/>
+> Undelivered Mail Returned to Sender...........................................
+> Some email addresses cannot be reached (...@gmial.cpm), we try to correct them,
+> but some of them are more difficult to guess. For other, it might also be a security
+> rule from your mail server. If you haven't received the instruction by email and most 
+> importantly the Slack invitation within a few day. 
+> Please contact us gadgetron2020 at sciencesconf dot org
+
 # GadgetronOnlineClass
 
 During June 2020 we will host the “**GadgetronOnlineClass**”. Although initially scheduled to take place in Bordeaux as a Summer School, the COVID-19 situation made that impossible. We are instead hosting it online. 
