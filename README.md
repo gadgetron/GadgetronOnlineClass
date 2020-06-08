@@ -44,14 +44,14 @@ June 18, 2020 | 14:00-15:00 | [link](Courses/Day2/Lecture1) | [MRD Part 1: Intro
 June 18, 2020 | 15:00-16:00 | [link](Courses/Day2/Lecture2) | [MRD Part 2: ]Siemens/GE/Bruker raw data conversion to MRD through XML style sheets, and working with HDF5 files] | Vinai Roopchansingh & J. Andrew Derbyshire
 June 18, 2020 | 16:00-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue 
 June 18, 2020 | 17:00-18:00 | [link](Courses/Day2/QandA) | [Q&A] | Everybody
- 
+
 ### Day 3 : Foreign-Language-Interface 
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 June 25, 2020 | 14:00-15:00 | [link](Courses/Day3/Lecture1) | [Foreign-Language-Interface ] | Kristoffer Knudsen
-June 25, 2020 | 15:00-16:30 | [link](Courses/Day3/Lecture2) | [Protyping at the scanner with MATLAB part 1] |  Oliver Josephs  
-June 25, 2020 | 16:00-17:00 | [link](Courses/Day3/Lecture3) | [Protyping at the scanner with MATLAB part 2] | Aurelien Trotier & Stan Rapacchi 
+June 25, 2020 | 15:00-16:30 | [link](Courses/Day3/Lecture2) | [Protyping at the scanner with MATLAB part 1] |  Aurélien Trotier & Stanislas Rapacchi  
+June 25, 2020 | 16:00-17:00 | [link](Courses/Day3/Lecture3) | [Protyping at the scanner with MATLAB part 2] | Oliver Josephs 
 June 25, 2020 | 17:00-18:00 | [link](Courses/Day3/QandA) | [Q&A] | Everybody
 
 ### Day 4 : C++ 
