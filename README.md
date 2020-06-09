@@ -8,8 +8,6 @@ During June 2020 we will host the “**GadgetronOnlineClass**”. Although initi
 
 This course is aimed at both new and experienced users of **Gadgetron**, covering basic reconstruction as well as the latest functionalities. The topics covered are intended for researchers in basic science and/or clinical research. The online course will also provide examples of how to use the vendor-agnostic **MRD** file format (formerly “**ISMRMRD**”) for your custom reconstructions.
 
-The course is organised remotely and will be accessible in live via **videoconference**. In addition of the course and pratical course, participants will have the possibility to propose work on a MRI reconstruction topic during **interactive session** with the speakers. Please, go to this [page](Interactive-Sessions) for more information, we encourage you to apply.
-
 The Gadgetron Online Course is made of several modules that constitute together the scientific stack. Gadgetron made use of standard computing languages (C++, Cmake, CUDA, Python, Matlab) that are themselve calling hundreds of libraries/packages/functions. We won't cover everything in this short course, but you should get enough information to decide if your research can benefit from Gadgetron. And I bet it will likely do.
 
 For any questions, feel to contact us on the [forum](https://groups.google.com/forum/#!forum/gadgetron) of Gagdetron or at gadgetron2020 /at/ sciencesconf.org
@@ -33,7 +31,7 @@ June 11, 2020 | 13:45-14:00 | | [Welcome] | Valéry Ozenne
 June 11, 2020 | 14:00-14:30 | [link](Courses/Day1/Lecture1) | [A tour of Gadgetron] | David Hansen
 June 11, 2020 | 14:30-15:30 | [link](Courses/Day1/Lecture2) | [Practical introduction to Gadgetron] | Kristoffer Knudsen
 June 11, 2020 | 15:30-15:40 |  | [Break]
-June 11, 2020 | 15:40-17:00 | [link](Courses/Day1/Lecture3) | [Basic reconstruction using Python] | Valery Ozenne
+June 11, 2020 | 15:40-17:00 | [link](Courses/Day1/Lecture3) | [Hand's on session: Basic reconstruction using Python] | Valery Ozenne
 June 11, 2020 | 17:00-18:00 | [link](Courses/Day1/QandA) | [Q&A] | Everybody
 
 ### Day 2 : MRD, a vendor-agnostic file format for MRI reconstruction (or toward the scanner room) 
@@ -60,7 +58,7 @@ Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
 July 2, 2020 | 14:00-15:00 | [link](Courses/Day4/Lecture1) | [How to write a C++ Gadget ] | David Hansen
 July 2, 2020 | 15:00-16:30 | [link](Courses/Day4/Lecture2) | [The Generic Cartesian Chain and toolboxes] | Hui Xue
-July 2, 2020 | 16:00-17:00 | [link](Courses/Day4/Lecture3) | [To be announced] | Adrienne Campbell 
+July 2, 2020 | 16:00-17:00 | [link](Courses/Day4/Lecture3) | [How to integrate your AI model inline on the scanner] | Hui Xue
 July 2, 2020 | 17:00-18:00 | [link](Courses/Day4/QandA) | [Q&A] | Everybody
 
 ## Participate to Online Course Agenda (Preparation and Modalities)
@@ -135,9 +133,9 @@ This lecture will cover starting and running Gadgetron, controlling Gadgetron be
 
  * [Gadgetron Hello World](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 
-### 1.3 - Basic reconstruction using Python  (15:40 -> 17:00 CEST)
+### 1.3 - Hand's on session: Basic reconstruction using Python  (15:40 -> 17:00 CEST)
 
-The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python gadget and the ismsmrd-python-toolboxes that contains various toolboxes dedicated to common issues. Its different submodules correspond to different applications, such as fourier transfrom, coil sensitivity map estimation, grappa reconstruction, etc.
+The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python gadget and the ismsmrd-python-toolboxes that contains various toolboxes dedicated to common issues. Its different submodules correspond to different applications, such as fourier transfrom, grappa reconstruction, etc.
 
 ### 1.4 - Q&A
 
@@ -149,7 +147,7 @@ The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python 
   * []()
   * []()
 
-### 1.4 - Basic reconstruction using Python  (17:00 -> 18:00 CEST)
+
 
 ## 2. MRD, a vendor-agnostic file format for MRI reconstruction (or toward the scanner room)   (day 2: June 18th)
 
