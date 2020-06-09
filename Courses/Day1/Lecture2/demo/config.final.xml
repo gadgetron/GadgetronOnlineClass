@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <version>2</version>
+
+  <readers>
+    <reader>
+      <dll>gadgetron_core_readers</dll>
+      <classname>AcquisitionReader</classname>
+    </reader>
+  </readers>
+
+  <stream>
+
+    <!-- Acquisitions -->
+    
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>NoiseAdjustGadget</classname>
+    </gadget>
+
+    <!-- Acquisitions -->
+
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>AcquisitionAccumulateTriggerGadget</classname>
+      <property name="trigger_dimension" value="repetition"/>
+    </gadget>
+
+    <!-- AcquisitionBuckets -->
+    
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>BucketToBufferGadget</classname>
+    </gadget>
+
+    <!-- ReconData -->
+
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>SimpleReconGadget</classname>
+    </gadget>
+
+    <!-- ImageArrays -->
+
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>ImageArraySplitGadget</classname>
+    </gadget>
+
+    <!-- Images; Complex -->
+
+    <gadget>
+      <dll>gadgetron_mricore</dll>
+      <classname>ComplexToFloatGadget</classname>
+    </gadget>
+
+    <!-- Images; Real -->
+
+    <!--
+    <external>
+      <connect port="18000"/>
+      <configuration/>
+    </external>    
+    -->
+    
+  </stream>
+
+  <writers>
+    <writer>
+      <dll>gadgetron_core_writers</dll>
+      <classname>ImageWriter</classname>
+    </writer>
+  </writers>
+
+</configuration>

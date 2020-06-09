@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <version>2</version>
+
+  
+  <stream>
+
+
+    
+    
+    <!-- This 'external' node sends data to the visualizer. -->
+    <external>
+      <connect port="18000"/>
+      <configuration/>
+    </external>
+    
+  </stream>
+  
+</configuration>
