@@ -191,7 +191,7 @@ $ gadgetron
 ```
 
 > <img src="https://img.shields.io/badge/-_Warning-orange.svg?style=flat-square"/>
-> Note that the gadgetron must be launched in the folder where external_python_tutorial.xml and my_first_python_gadget.py as been edited.
+> Note that the gadgetron must be launched in the folder where external_python_tutorial.xml and my_first_python_gadget.py have been edited.
 
 Run the ISMRMRD client: 
 ```bash 
