@@ -4,7 +4,7 @@
 
 Title : Practical Introduction to Gadgetron
 
-Schedule : June 11, 2020 | 15:00-16:00 
+Schedule : June 11, 2020 | 14:30-15:30 
 
 Speaker: Kristoffer Langeland Knudsen
 

@@ -2,7 +2,7 @@
 
 Title : Basic reconstruction using Python
 
-Schedule : June 11, 2020 | 16:00-17:00 
+Schedule : June 11, 2020 | 15:40-17:00 
 
 Speaker: Valéry Ozenne
 
@@ -70,7 +70,10 @@ sudo python3 setup.py install
 sudo pip3 install pygrappa
 sudo pip3 install sigpy
 ```
+## known issues
 
+In WSL, there is a need for a X11 server for the python gadgets to print out. Error is : "couldn't connect to display ":0"
+We recommand, this one for the fix: [vcxsrv](https://sourceforge.net/projects/vcxsrv/)
 
 ## Sequence and Data
 
