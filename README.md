@@ -112,6 +112,17 @@ Feel free to contact us and to post any inquiries on the gadegtron [forum](https
 > Tutorial Hello word [link](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Hello-World)
 > Running one of them before is highly recommended
 
+### Raw data for demonstrations and coding sessions
+
+To follow along on your own computers with the live demonstrations and coding sessions, the data for most of those can be found [here](https://zenodo.org/record/3888658#.XuEiGS2ZPOQ)
+
+If you prefer to search the dataset by its DOI on Zenodo, it is:  10.5281/zenodo.3888658
+
+The final link these data can be accessed at, which should bring you back to the same dataset, is [https://doi.org/10.5281/zenodo.3888658](https://doi.org/10.5281/zenodo.3888658)
+
+This file should have a checksum of: 361e2dccec2949c4914414dada6d2b5dd841aff4 computed using 'shasum' on macOS and openSUSE.
+
+
 ## 1. Introduction courses (day 1 : June 11th 2020)
 
 ### 1.1 - Gadgetron, a high level overview introduction(14:00 -> 14:30 CEST)
