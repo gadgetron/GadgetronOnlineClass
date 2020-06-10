@@ -132,7 +132,7 @@ Don't forget to change *'/path/to/ismrmrd_to_nifti'* (line 5) and */path/where/y
 
 ### Writing the XML
 
-We will now create a new xml file named `python_image_array_recon_nifti_epi.xml`
+We will now create a new xml file named `python_image_array_recon_nifti_simple.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -163,31 +163,15 @@ We will now create a new xml file named `python_image_array_recon_nifti_epi.xml`
             <dll>gadgetron_mricore</dll>
             <classname>NoiseAdjustGadget</classname>
         </gadget>
-        
-          <!-- EPI correction -->
-      <gadget>
-          <name>ReconX</name>
-          <dll>gadgetron_epi</dll>
-          <classname>EPIReconXGadget</classname>
-      </gadget>
 
-      <gadget>
-          <name>EPICorr</name>
-          <dll>gadgetron_epi</dll>
-          <classname>EPICorrGadget</classname>
-      </gadget>
 
-      <gadget>
-          <name>FFTX</name>
-          <dll>gadgetron_epi</dll>
-          <classname>FFTXGadget</classname>
-      </gadget>
+        <!-- Data accumulation and trigger gadget -->
+    <gadget>
+        <name>RemoveROOversampling</name>
+        <dll>gadgetron_mricore</dll>
+        <classname>RemoveROOversamplingGadget</classname>
+    </gadget>
 
-      <gadget>
-          <name>OneEncodingSpace</name>
-          <dll>gadgetron_epi</dll>
-          <classname>OneEncodingGadget</classname>
-        </gadget>
 
 
     <gadget>
@@ -393,7 +377,7 @@ $ gadgetron
 
 Run the ISMRMRD client: 
 ```bash 
-$ gadgetron_ismrmrd_client -f Data/meas_MID00033_FID13782_gre3D_2_2_tranversal_A2P.h5.h5  -C python_image_array_recon_nifti_epi.xml
+$ gadgetron_ismrmrd_client -f Data/meas_MID00033_FID13782_gre3D_2_2_tranversal_A2P.h5.h5  -C python_image_array_recon_nifti_simple.xml
 ```
 
 You will see from the Gadgetron ISMRMRD client side :
