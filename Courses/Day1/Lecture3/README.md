@@ -2,7 +2,7 @@
 
 Title : Basic reconstruction using Python
 
-Schedule : June 11, 2020 | 16:00-17:00 
+Schedule : June 11, 2020 | 15:40-17:00 
 
 Speaker: Valéry Ozenne
 

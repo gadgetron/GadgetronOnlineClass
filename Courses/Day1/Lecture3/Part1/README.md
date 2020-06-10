@@ -2,7 +2,7 @@
 
 Title : Basic reconstruction using Python
 
-Schedule : June 11, 2020 | 16:00-17:00 
+Schedule : June 11, 2020 | 15:40-17:00 
 
 Speaker: Valéry Ozenne
 
@@ -70,18 +70,20 @@ sudo python3 setup.py install
 sudo pip3 install pygrappa
 sudo pip3 install sigpy
 ```
+## known issues
 
+In WSL, there is a need for a X11 server for the python gadgets to print out. Error is : "couldn't connect to display ":0"
+We recommand, this one for the fix: [vcxsrv](https://sourceforge.net/projects/vcxsrv/)
 
 ## Sequence and Data
 
-The data are single-shot gradient-echo EPI acquisitions from the [CMRR sequence](https://www.cmrr.umn.edu/multiband/) acquired on a 3T Prisma from Siemens.
+The data are single-shot gradient-echo EPI acquisitions from the [CMRR sequence](https://www.cmrr.umn.edu/multiband/) acquired on a 3T Prisma from Siemens without multiband acceleration.
 
 Data is available at this link:  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3777994.svg)](https://doi.org/10.5281/zenodo.3777994)
 
 Three datasets (including noise calibration and kspace) are available: 
 - phantom, 12 slices, 3 repetitions, in-plane acceleration none, slice acceleration none   
 - phantom, 12 slices, 3 repetitions, in-plane acceleration 2, slice acceleration none  
-- brain, 36 slices, 3 repetitions, in-plane acceleration 2, slice acceleration 2 
 
 The data has been converted using **siemens_to_ismrmrd**, we will not discuss data conversion here. This will be the topics of the next lectures.
 

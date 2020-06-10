@@ -8,10 +8,6 @@ import matplotlib.pyplot as plt
 
 
 def EmptyPythonGadget(connection):
-
-
-
-def EmptyPythonGadget(connection):
    counter=0
 
    # We're only interested in repetition ==0  in this example, so we filter the connection. Anything filtered out in
