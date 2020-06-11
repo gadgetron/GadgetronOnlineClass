@@ -8,9 +8,9 @@ Speaker: Oliver Josephs
 
 [DRAFT IN PREPARATION]
 
-This lecture presents a real-world application of Gadgetron and MATLAB.
+This lecture presents a real-world implementation of Gadgetron and MATLAB at the scanner.
 
-Chain of components
+## Overview of components
 
 - Siemens scanner
 - IceGadgetron
@@ -22,3 +22,21 @@ Chain of components
 - gadgetron-matlab
 - Matlab (R2020a)
 - Reconstruction code
+
+## Topics
+
+- Software traceability
+- MATLAB within Docker
+- "execute" MATLAB in docker; "connect" to MATLAB outside docker - debugger
+- n_acquistions trigger
+- passing buckets to MATLAB
+- working with data and headers withing MATLAB
+- returning images to the scanner database
+- MATLAB Parallel Toolbox with Kristoffer's functional programming paradigm steps
+- IceGadgetron xml configs to get raw data and allow image database receipt
+- github ismrmrd mrd handling
+
+- (If time permits)
+- Physiological waveform handling with Gadgetron and MATLAB
+- Siemens pulse / ecg / breathing belt
+- Timestamping circuitry
