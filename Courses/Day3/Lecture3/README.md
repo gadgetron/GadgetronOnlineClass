@@ -30,7 +30,7 @@ This lecture presents a real-world implementation of Gadgetron and MATLAB at the
 - "execute" MATLAB in docker; "connect" to MATLAB outside docker - debugger
 - n_acquistions trigger
 - passing buckets to MATLAB
-- working with data and headers withing MATLAB
+- working with data and headers within MATLAB
 - returning images to the scanner database
 - MATLAB Parallel Toolbox with Kristoffer's functional programming paradigm steps
 - IceGadgetron xml configs to get raw data and allow image database receipt
