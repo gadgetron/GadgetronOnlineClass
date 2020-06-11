@@ -27,6 +27,7 @@ This lecture presents a real-world implementation of Gadgetron and MATLAB at the
 
 - Software traceability
 - MATLAB within Docker
+- N.B. https://github.com/mathworks-ref-arch/matlab-dockerfile
 - "execute" MATLAB in docker; "connect" to MATLAB outside docker - debugger
 - n_acquistions trigger
 - passing buckets to MATLAB
