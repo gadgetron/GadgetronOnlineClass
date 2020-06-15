@@ -152,7 +152,7 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
 # Objectives
 
 1. Setup Matlab and verify installation
-2. [Introduction to Matlab-Gadgetron](Introducion)
+2. [Introduction to Matlab-Gadgetron](Introduction)
    - Classes, packages in +folder, nested functions
    - Data types
 3. [Matlab insertion and usage](ExecutionBasics)
@@ -164,7 +164,7 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
    - Buffer -> Enhancing steps to allow multiple dimensions
    - Reconstruction with BART (called from Matlab)
    - Image processing gadget
-5. [Demo2:_Non-Cartesian](Demo2:_nonCartesian)
+5. [Demo2: Non-Cartesian](Demo2_nonCartesian)
    - Trajectory / dcf -> change reader part
    - Reconstruction using BART from Matlab
    - Add trajectory to acquisition and forward to gadgetron GriddingGadget (**Not enough time**)
