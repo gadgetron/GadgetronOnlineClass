@@ -121,7 +121,7 @@ end
 
 ##### Reconstruction with BART (called from Matlab)
 
-
+Aurélien?
 
 ##### Image processing gadget
 
