@@ -27,6 +27,26 @@ This lecture presents a real-world implementation of Gadgetron and MATLAB at the
 
 - Software traceability
 - MATLAB within Docker
+- NVIDIA docker
+
+For 'execute' to work we gadgetron has to be able to call the matlab binary (in batch mode).
+Container for standard environment and some separation.
+
+sudo docker create --name=demo_container_name \
+  --net=host \
+  --privileged \
+  -v /hostshare:/hostshare \
+	-v /usr/local/MATLAB:/usr/local/MATLAB \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	--volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+  -e DISPLAY \
+  --gpus all \
+	demo_image_name
+  
+  N.B.
+  
+  OR
+
 - N.B. https://github.com/mathworks-ref-arch/matlab-dockerfile
 - "execute" MATLAB in docker; "connect" to MATLAB outside docker - debugger
 - n_acquistions trigger
