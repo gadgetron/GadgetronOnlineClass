@@ -29,21 +29,27 @@ This lecture presents a real-world implementation of Gadgetron and MATLAB at the
 - MATLAB within Docker
 - NVIDIA docker
 
-For 'execute' to work we gadgetron has to be able to call the matlab binary (in batch mode).
-Container for standard environment and some separation.
+For the external language interface 'execute' to work gadgetron has to be able to call a matlab binary (in batch mode).
+Docker containers for standard environment and isolation between e.g. test and production.
 
-sudo docker create --name=demo_container_name \
-  --net=host \
-  --privileged \
-  -v /hostshare:/hostshare \
-	-v /usr/local/MATLAB:/usr/local/MATLAB \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	--volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
-  -e DISPLAY \
-  --gpus all \
-	demo_image_name
+(N.B. line continuation backslashes required at end of lines)
+
+sudo docker create --name=example_container_name \\\
+  --net=host \\\
+  --privileged \\\
+  -v /hostshare:/hostshare \\\
+  -v /usr/local/MATLAB:/usr/local/MATLAB \\\
+  -v /tmp/.X11-unix:/tmp/.X11-unix \\\
+  --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \\\
+  -e DISPLAY \\\
+  --gpus all \\\
+  example_image_name
   
-  N.B.
+also, in Dockerfile, since not recognised in command line(bug ?):
+env NVIDIA_VISIBLE_DEVICES=all
+env NVIDIA_DRIVER_CAPABILITIES=all
+
+gives access to GPU from container for Matlab graphics.
   
   OR
 
