@@ -188,11 +188,11 @@ Python 3.
 
 ### 2.3 - Communication process with the Siemens scanner
 
-This [lesson]()  
+This course servers an introduction to the IceGadgetron software. The main functinality of IceGadgetron is to stream siemens MR kspace data to MRD formant and send data to Gadgetron. As Gadgetron reconstructed images and send images back to scanner, IceGadgetron will receive the images and pass them down the functor chain. In this way, the inline processing is achieved, which allows seamless integration of Gadgetron to MR scanner and be used by non-technical users. 
 
 **See also**:
 
-  * [ ]( )
+  * [IceGadgetron](https://github.com/NHLBI-MR/IceGadgetron)
   * [ ]( )
 
 
