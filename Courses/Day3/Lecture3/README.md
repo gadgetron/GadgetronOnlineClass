@@ -16,7 +16,7 @@ This lecture presents a real-world use of Gadgetron and MATLAB at the scanner.
 
 ## Context
 
-Gadgetron integration within imaging neuroscience centres. The typical work at the centres involves multiple subject studies (e.g. 20 participants) with scanning over a period of weeks to months per study. Several, different, ongoing studies share the same scanners so we need robust separation of application. Also for both smooth operation and as for _scientific_ reproducibility we have to provide a robust, portable and tracable environment. Docker containers for standard environment and isolation between ongoing studies, physics developmentcand production studies. Git repositories on Github for tracability.
+Gadgetron integration within imaging neuroscience centres. The typical work at the centres involves multiple subject studies (e.g. 20 participants) with scanning over a period of weeks to months per study. Several, different, ongoing studies share the same scanners so we need robust separation of application. Also for both smooth operation and as for _scientific_ reproducibility we have to provide a robust, portable and tracable environment. Docker containers for standard environment and isolation between ongoing studies, physics development and production studies. Git repositories on Github for tracability.
 
 ## Overview of hardware and software component overview
 
@@ -75,8 +75,99 @@ gives access to GPU from container for Matlab figures. (https://github.com/NVIDI
 
 ### Optimisation for Fast Recon at the Scanner
 
-- n_acquistions trigger
 - passing buckets to MATLAB
+```matlab
+function epi(connection)
+
+disp("Matlab EPI reconstruction running.")
+
+%% Generally useful parameters and debugging switches
+g = utils.extract_xml_parameters(connection.header);
+
+g.M = utils.generate_TBR_matrix(g);
+
+% Use parallel, data-queued, pipeline if available
+g.Parallel = true;
+
+% Use separate processing steps for the acc. acq.'s
+Separate_steps = false;
+
+% Produce graphical output
+Display = true;
+
+% Save nifti data volumes
+Save_nifti = false;
+
+% Send reconstucted images back to client
+Send_images = true;
+
+disp(['Num segs = ' num2str(g.SegPE)])
+disp(['CAIPI = ' num2str(g.upl('CAIPI'))])
+
+
+%% Set up parallel thread pool
+p=gcp('nocreate');
+if isempty(p)
+    parpool('threads');
+end
+
+%% Set up processing chain
+
+% Get the next data bucket from gadgetron
+next = @connection.next;
+
+% Bucket may be a sensitivity reference or an acc. acq. volume
+
+% If it's a sensitivity reference, reconstruct it
+next = steps.reconstruct_reference(next, g);
+
+% if it's a sensitity reference volume compute unfolding matrices
+next = steps.sense_prepare(next, g);
+
+% Otherwise the bucket is an acc. acq.,
+
+next = steps.extract_data(next, g);
+
+if Separate_steps
+    % TODO these do not handle the header correctly, yet
+    next = steps.frequency_offset_correction(next, g);
+    
+    next = steps.reconstruct_1d(next, g);
+    
+    next = steps.fft2d_and_unfold(next, g);
+else
+    % To reduce data communication overhead, combine previous three steps
+    next = steps.combined_reconstruction(next, g);
+end
+
+if Display
+    next = steps.display_volume(next);
+end
+
+if Save_nifti
+    next = steps.save_nifti(next, g);
+end
+
+if Send_images
+    % Scanner seems to want 2D EPI by slice
+    % but 3D EPI by volume
+    if g.dimEncod(3) == 1 % 2D
+        next = steps.mrm_slices(next, g);
+    else % 3D
+        next = steps.mrm_volume(next, g);
+    end
+        
+    next = steps.send_to_client(next, connection);
+end
+
+%% Execute the processing chain
+tic, gadgetron.consume(next); toc
+
+%% End of reconstruction code
+end
+
+```
+- n_acquistions trigger
 - working with data and headers within MATLAB
 - returning images to the scanner database
 - Matlab multi-core processing
