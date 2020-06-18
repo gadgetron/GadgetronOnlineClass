@@ -10,9 +10,11 @@ Please contact hui.xue@nih.gov.
 
 ## Where to download installer and testing data
 
-Installer can be downloaded from 
+Installer can be downloaded from :
 
-Testing data can be downloaded from
+https://gadgetrondata.blob.core.windows.net/ice-gadgetron-installer/installers.zip
+
+This package includes the chroot image, installers for VE11C and VE11E.
 
 ## Where to find further information
 
