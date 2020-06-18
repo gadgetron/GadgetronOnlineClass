@@ -1,6 +1,6 @@
 # Interactive course for IceGadgetron
 
-This course servers an introduction to the IceGadgetron software. The main functinality of IceGadgetron is to stream siemens MR kspace data to MRD formant and send data to Gadgetron. As Gadgetron reconstructed images and send images back to scanner, IceGadgetron will receive the images and pass them down the functor chain. In this way, the inline processing is achieved, which allows seamless integration of Gadgetron to MR scanner and be used by non-technical users.
+This course servers an introduction to the IceGadgetron software. The main function of IceGadgetron is to convert siemens MR kspace data to MRD formant and send data to Gadgetron. As Gadgetron reconstructs images and sends images back to scanner, IceGadgetron will receive the images and pass them down the functor chain. In this way, the inline processing is achieved, which allows seamless integration of Gadgetron to MR scanner. That is, turning your research into clinical imaging application.
 
 ## Where to get IceGadgetron
 
