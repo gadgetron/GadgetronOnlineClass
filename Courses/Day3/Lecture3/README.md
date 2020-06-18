@@ -75,7 +75,8 @@ gives access to GPU from container for Matlab figures. (https://github.com/NVIDI
 
 ### Optimisation for Fast Recon at the Scanner
 
-- passing buckets to MATLAB
+- overall function
+
 ```matlab
 function epi(connection)
 
@@ -167,7 +168,115 @@ tic, gadgetron.consume(next); toc
 end
 
 ```
+
+- passing buckets to MATLAB
+```matlab
+function next = reconstruct_reference(input, g)
+%RECONSTRUCT_REFERENCE Reconstruct fully-encoded sensitivity reference data
+%   Detailed explanation goes here
+
+nCha    = g.nCha;                         % No. of coil channels used for acquisition
+nFE     = g.dimEncod(1);                  % No. of frequency-encoded points in final image
+nFEAcq  = g.upl('numSamples');            % Typically will be nFE * over-sampling factor of 2
+nNav    = g.upl('numberOfNavigators');    % No. of phase reference echoes
+AccPE   = g.AccFact(2);                   % Acceleration factor of EPI readout
+% Why doesn't dimEncod reflect partial Fourier?
+% nPEAcq  = g.dimEncod(2) / AccPE;          % No. of lines *acquired* (assuming no partial Fourier) in main (not ref.) EPI readout
+Acc3D   = g.AccFact(3);                   % Acceleration factor in partition direction
+nParAcq = g.dimEncod(3) / Acc3D;          % No. of partitions acquired
+
+% Processing choices:
+nav_smooth          = 10;           % Smoothing to be applied to navigators [k-space span]
+nav_padFactor       = 2;            % Padding multiple for extrapolating navigator correction
+
+    function retval = reconstruct_reference(bucket)
+        
+        if bucket.ref.count == 0 % this is a (hopefully, data) bucket. Don't handle it here.
+            retval = bucket;
+            return
+        end
+        
+        % N.B. Re. segmentation: For acc. acq. there are g.SegPE segments; for
+        % the reference there are g.SegPE * AccPE segments.
+        % We assume that the reference segments are acquired sequentially.
+        disp(['product=' num2str(nFEAcq*nCha*g.SegPE*AccPE*nParAcq*Acc3D)])
+        disp(['size_bucket=' num2str(size(bucket.ref.data))])
+        d.data=reshape(bucket.ref.data, nFEAcq, nCha, [], g.SegPE*AccPE, nParAcq, Acc3D);
+        %         nRefETL = size(d,3); % Number of lines acquired in EPI Echo train
+        
+%         %% Frequency Offset Correction
+%         % function data = frequency_offset_correction(data, FirstNav_Middle, TE, tAcq, echospaceSec, limits)
+        d = utils.frequency_offset_correction(d, g.FirstNav_Middle  * 1e-6,...
+            g.TE               * 1e-3,...
+            g.tAcq             * 1e-6,...
+            g.tEchospace       * 1e-6,...
+            g.xml.encoding.encodingLimits.kspace_encoding_step_1);
+        
+        %% Recon reference
+        
+        d = utils.recon1d(d, g.M, nNav, nav_padFactor, nav_smooth);
+        
+        % Partial Fourier
+        f1d=zeros([g.dimEncod(2) nFE nCha Acc3D*nParAcq],'like',single(1i));
+        f1d(1:size(d.f1d, 1),:,:,:)=d.f1d;
+        
+        % f1d - Fully sampled reference volume in projection-space after TBR and
+        % navigator-based phase-correction; used to calculate sensitivities.
+        
+        % vvv - Fully sampled reference volume now in image domain having performed
+        % FFT along 1st (PE) and 4th (PAR) dimensions:
+        vvv=fftshift(fft(fft(fftshift(f1d)),[],4));    % AccPE*nPEAcq, nFE, nCha, Acc3D*nParAcq
+        
+        % To match undersampled data vol dimension order, for nifti saving, display, etc.
+        % nFE, AccPE*nPEAcq, nCha, Acc3D*nParAcq
+        vvv=permute(vvv,[2 1 3 4]);
+        
+        retval=vvv;
+        %             save -v7.3 -nocompression ref vvv
+        
+        % sss - sqrt of sum of squares recon of reference volume:
+        %         sss=sqrt(sum(conj(vvv).*vvv,3));
+        %         figure(2);montage(sss*7e1);figure(1); % Need to remove for online case
+    end
+next = @() reconstruct_reference(input());
+
+end
+```
 - n_acquistions trigger
+```xml
+        <!-- Human seg 0 caipi 1 pf 6/8 -->
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>AcquisitionAccumulateTriggerGadget</classname>
+            <property name="trigger_dimension" value="n_acquisitions"/>
+            <property>
+                <name>n_acquisitions_before_trigger</name>
+                <value>10912</value>
+            </property>        
+            <property>
+                <name>n_acquisitions_before_ongoing_trigger</name>
+                <value>2068</value>
+            </property>        
+        </gadget>
+        
+    <!--
+        <external>
+            <execute name="epi" type="matlab"/>
+            <configuration/>
+        </external>
+    --> 
+	
+        <external>
+            <connect port="18000"/>
+            <configuration/>
+        </external>
+	
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>FloatToUShortGadget</classname>
+        </gadget>
+
+```
 - working with data and headers within MATLAB
 - returning images to the scanner database
 - Matlab multi-core processing
