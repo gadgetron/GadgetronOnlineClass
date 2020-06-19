@@ -28,7 +28,7 @@ Gadgetron integration within imaging neuroscience centres. The typical work at t
   - Docker
   - Gadgetron
   - gadgetron-matlab
-  - Matlab (R2020a)
+  - Matlab (R2020a). Parallel Computing Toolbox. Thread pools.
   - Reconstruction code
 
 ## Topics covered
@@ -62,9 +62,9 @@ env NVIDIA_DRIVER_CAPABILITIES=all
 gives access to GPU from container for Matlab figures. (https://github.com/NVIDIA/nvidia-container-runtime)
   
 - N.B. https://github.com/mathworks-ref-arch/matlab-dockerfile
- - Matlab installed _inside_ the container (e.g. for the cloud).
- - Mathworks' curated Dockerfiles, etc.
- - Dependencies, Licensing, Toolboxes, etc.
+	- Matlab installed _inside_ the container (e.g. for the cloud).
+ 	- Mathworks' curated Dockerfiles, etc.
+ 	- Dependencies, Licensing, Toolboxes, etc.
  
 - "execute" MATLAB in docker; "connect" to MATLAB (inside or) outside docker for debugger.
 
@@ -75,7 +75,48 @@ gives access to GPU from container for Matlab figures. (https://github.com/NVIDI
 
 ### Optimisation for Fast Recon at the Scanner
 
-- overall function
+Unique selling point of Gadgetron is that reconstruction occurs at the scanner. If you have to wait 10 minutes there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. Matlab has the reputation of being slow. But we can work around bottlenecks and actually have Matlab running quite fast enough for on-line use on a typical multi-core workstation. The style of this section will be a top-down code walk-through to illustrate some of the structure that Kristoffer has given us.
+
+- Gadgetron chain configuration xml
+	- "n_acquistions" trigger
+```xml
+.
+.
+        <!-- Human seg 0 caipi 1 pf 6/8 -->
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>AcquisitionAccumulateTriggerGadget</classname>
+            <property name="trigger_dimension" value="n_acquisitions"/>
+            <property>
+                <name>n_acquisitions_before_trigger</name>
+                <value>10912</value>
+            </property>        
+            <property>
+                <name>n_acquisitions_before_ongoing_trigger</name>
+                <value>2068</value>
+            </property>        
+        </gadget>
+        
+    <!--
+        <external>
+            <execute name="epi" type="matlab"/>
+            <configuration/>
+        </external>
+    --> 
+	
+        <external>
+            <connect port="18000"/>
+            <configuration/>
+        </external>
+	
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>FloatToUShortGadget</classname>
+        </gadget>
+
+```
+
+- overall reconstruction function (called by 'execute' or 'connect')
 
 ```matlab
 function epi(connection)
@@ -169,6 +210,18 @@ end
 
 ```
 
+- Example '+utils'
+	- 'Normal' (first-order) functions
+	- Small utilities or components of recon.
+	- Your favourite (1000 line) reconstruction already coded.
+	- Analogous to toolboxes in c++ Gadgetron.
+	- Might be called directly and / or from steps.
+
+- Example '+steps' function
+	- Functions taking and returning functions (function pointers, anyway).
+	- Analogous to gadgets in c++ Gadgetron stream.
+	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
+
 - passing buckets to MATLAB
 ```matlab
 function next = reconstruct_reference(input, g)
@@ -242,43 +295,14 @@ next = @() reconstruct_reference(input());
 
 end
 ```
-- n_acquistions trigger
-```xml
-        <!-- Human seg 0 caipi 1 pf 6/8 -->
-        <gadget>
-            <dll>gadgetron_mricore</dll>
-            <classname>AcquisitionAccumulateTriggerGadget</classname>
-            <property name="trigger_dimension" value="n_acquisitions"/>
-            <property>
-                <name>n_acquisitions_before_trigger</name>
-                <value>10912</value>
-            </property>        
-            <property>
-                <name>n_acquisitions_before_ongoing_trigger</name>
-                <value>2068</value>
-            </property>        
-        </gadget>
-        
-    <!--
-        <external>
-            <execute name="epi" type="matlab"/>
-            <configuration/>
-        </external>
-    --> 
-	
-        <external>
-            <connect port="18000"/>
-            <configuration/>
-        </external>
-	
-        <gadget>
-            <dll>gadgetron_mricore</dll>
-            <classname>FloatToUShortGadget</classname>
-        </gadget>
+- [Slide here with graphical summary of closures / control of flow]
 
-```
+- Now concentrate on data flow
 - working with data and headers within MATLAB
 - returning images to the scanner database
+
+## Parallel processing within Gadgetron Matlab
+
 - Matlab multi-core processing
   - Implicit parallisation
       - LAPACK
