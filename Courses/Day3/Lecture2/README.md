@@ -8,8 +8,6 @@ Speakers : Stanislas Rapacchi & Aurélien Trotier
 
 [TOC]
 
-## 
-
 ## Foreword
 
 The Gadgetron responds to two major issues in MRI:
@@ -87,8 +85,6 @@ Replace line 16 : `boost::process::args={"-batch", "gadgetron.external.main"},'`
 
 The following programm will be used at the end of the tutorial. You can skip this part at the beginning. [ismrmrdviewer](https://github.com/ismrmrd/ismrmrdviewer) [BART](https://github.com/mrirecon/bart)
 
-## 
-
 ## Testing your installation
 
 To verify the Matlab-Gadgetron connection is working, one can type
@@ -133,21 +129,19 @@ Test status: Passed
 1 tests passed. 0 tests failed. 0 tests skipped.
 ```
 
-## 
+
 
 ## Sequence and Data
 
-We will use a 3D MP2RAGE sequence with a variable density poisson undersampling mask acquired on a 3T Prisma from Siemens.
+Data are available at this link [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3888658.svg)](https://doi.org/10.5281/zenodo.3888658) and **to complete**
 
-Data is available at this link [![DOI](https://camo.githubusercontent.com/a5e1c3af3a977667df49db191e2786b56bc4a3c2/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e353238312f7a656e6f646f2e333737373939342e737667)](https://doi.org/10.5281/zenodo.3777994)[ SMASH](https://sh2hh6qx2e.search.serialssolutions.com/?rft_id=info:doi/10.5281/zenodo.3777994&sid=lama-browser-addon): **Need to be change**
+You should found :
 
-One dataset (without noise calibration) is available:
+- A 2D MP2RAGE dataset
+- A spiral dataset
+- a radial dataset
 
-- brain, 0.8mm isotropic, acceleration factor = 20.
-
-The data has been converted with **siemens_to_ismrmrd**, we will not discuss data conversion here. This will be the object of the following readings.
-
-## 
+The data has been converted with **siemens_to_ismrmrd**, we will not discuss data conversion here.
 
 # Objectives
 
@@ -160,12 +154,17 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
    - Debug with Matlab listening
    - Retrieve connection header and next item
 4. [Demo1: Cartesian](Demo1_Cartesian)
-   - Bucket -> Show workflow latency difference
    - Buffer -> Enhancing steps to allow multiple dimensions
-   - Reconstruction with BART (called from Matlab)
    - Image processing gadget
 5. [Demo2: Non-Cartesian](Demo2_nonCartesian)
    - Trajectory / dcf -> change reader part
    - Reconstruction using BART from Matlab
    - Add trajectory to acquisition and forward to gadgetron GriddingGadget (**Not enough time**)
 
+# Exercices
+
+## Buffering the data under matlab
+
+The objective of this exercise is to reconstruct the 2DMP2RAGE.h5 dataset without the BucketToBuffer gadget. You have to buffer the data under matlab (hints : use the linear indexing of matlab).
+
+A correction and detailled instruction is available in the corresponding **bucket** subfolder.

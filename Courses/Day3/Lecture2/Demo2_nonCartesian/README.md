@@ -6,24 +6,24 @@ Schedule : June 25, 2020 | 15:00-16:00
 
 Speakers : Aurélien Trotier & Stanislas Rapacchi
 
-## 
+
 
 ## Summary
 
-- [Foreword]
-- [Setup for demo]
-- Read the trajectory
-  - [Take a look at the data]
-  - [Correct the reader]
-  - [Conclusion for trajectory]
-- Reconstruction of non-cartesian data using BART
-  - [Data format in BART]
-  - [Simple gridding Adjoint]
-  - [Iterative gridding Inverse]
-- [Send the data]
-- [Conclusion]
+- [Foreword](#foreword)
+ - [Setup for demo](#Setup-for-demo)
+ - [Read the trajectory](#Read-the-trajectory)
+    - [Take a look at the data](#Take-a-look-at-the-data)
+    - [Correct the reader](#Correct-the-reader)
+    - [Conclusion for trajectory](#Conclusion-for-trajectory)
+ - [Reconstruction of non-cartesian data using BART](#Reconstruction-of-non-cartesian-data-using-BART)
+    - [Data format in BART](#Data-format-in-BART)
+    - [Simple gridding Adjoint](#Simple-gridding-Adjoint)
+    - [Iterative gridding Inverse](#Iterative-gridding-Inverse)
+- [Send the data](#Send-the-data)
+- [Conclusion](#Conclusion)
 
-## 
+
 
 ## Foreword
 
@@ -37,11 +37,11 @@ In this demo we will show you how to reconstruct a non-Cartesian  dataset (spira
 - Generate images
 - Send images
 
-## 
+
 
 ## Setup for demo
 
-After the previous demo, you might be used to the following part :
+In this example we will use a 2D spiral dataset : **spiral_2D_ssfp.h5** available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3888658.svg)](https://doi.org/10.5281/zenodo.3888658). After the previous demo, you might be used to the following part :
 
 First you need to create the Gadgetron config file **demo_2_nonCart.xml**.
 
@@ -149,7 +149,7 @@ gadgetron_ismrmrd_client -f /home/atrotier/GITHUB/EDUC_GT_MATLAB/data/spiral_2D_
 
 Matlab should stop the script at your breakpoint.
 
-## 
+
 
 ## Read the trajectory
 
@@ -214,7 +214,7 @@ Finding the last one is a bit tricky, it is the density compensation  function u
 
 We can ask ourself why it is not store in the empty **density**. Short answer, in 2010 it was used like that and some C++ gadgets (like the [GriddingReconGadget](https://github.com/gadgetron/gadgetron/blob/master/gadgets/mri_noncartesian/GriddingReconGadgetBase.hpp)) know that the 3rd dimension store the **density** for 2D non-Cartesian acquisition.
 
-### 
+
 
 ### Correct the reader
 
@@ -275,17 +275,17 @@ ans =
            3        2554          48
 ```
 
-### 
+
 
 ### Conclusion for trajectory
 
 We are able to read the non-cartesian data in matlab. As we saw,  non-cartesian acquisition are often not well tagged/filled and requires  to check the data/trajectory.
 
-## 
+
 
 ## Reconstruction of non-Cartesian data using BART
 
-### 
+
 
 ### Data format in BART
 
@@ -307,7 +307,7 @@ traj(1:2,:,:)=trajtmp;
 traj = traj*connection.header.encoding.encodedSpace.fieldOfView_mm.x; % scaling 1/FOV unit
 ```
 
-### 
+
 
 ### Simple gridding Adjoint
 
@@ -335,13 +335,13 @@ figure; imshow(agrid,[]);
 
 **Much better !**
 
-The adjoint gridding operation is fast because it is not an iterative reconstruction, however it require to know the density. Depending on  your trajectory, you can either know an analytical solution or use the  implementation of this paper [![DOI](https://camo.githubusercontent.com/0574f5a1e1ea470700ce15b92b5d184cbcccd3f3/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e313030322f6d726d2e32333034312e7376673f73616e6974697a653d74727565)](https://doi.org/10.1002/mrm.23041)[ SMASH](https://sh2hh6qx2e.search.serialssolutions.com/?rft_id=info:doi/10.1002/mrm.23041&sid=lama-browser-addon) available [here](https://www.ismrm.org/mri_unbound/sequence.htm) for matlab and currently integrated in [a C++ gadget under Gadgetron](https://github.com/gadgetron/gadgetron/pull/845).
+The adjoint gridding operation is fast because it is not an iterative reconstruction, however it require to know the density. Depending on  your trajectory, you can either know an analytical solution or use the  implementation of this paper [![DOI](https://camo.githubusercontent.com/0574f5a1e1ea470700ce15b92b5d184cbcccd3f3/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e313030322f6d726d2e32333034312e7376673f73616e6974697a653d74727565)](https://doi.org/10.1002/mrm.23041)available [here](https://www.ismrm.org/mri_unbound/sequence.htm) for matlab and or a WIP in [a C++ gadget under Gadgetron](https://github.com/gadgetron/gadgetron/pull/845).
 
-### 
+
 
 ### Iterative gridding Inverse
 
-An other way to do the nufft is to use the option **-i** rather than **-a** and will compensates for density differences in k-space  [![DOI](https://camo.githubusercontent.com/64c4fe89b54738c422590e14910524069c33d2f9/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e313030322f6d726d2e32323435332e7376673f73616e6974697a653d74727565)](https://doi.org/10.1002/mrm.22453)[ SMASH](https://sh2hh6qx2e.search.serialssolutions.com/?rft_id=info:doi/10.1002/mrm.22453&sid=lama-browser-addon)
+An other way to do the nufft is to use the option **-i** rather than **-a** and will compensates for density differences in k-space  [![DOI](https://camo.githubusercontent.com/64c4fe89b54738c422590e14910524069c33d2f9/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e313030322f6d726d2e32323435332e7376673f73616e6974697a653d74727565)](https://doi.org/10.1002/mrm.22453)
 
 ```matlab
 igrid = bart('nufft -i -c', traj,matrice);
@@ -357,7 +357,7 @@ Should i use the adjoint (with density) or iterative methode ?
 - For 3D trajectories, the inverse nufft might not converge.
 - If the reconstruction is not converging in nufft, it will not  converge in the pics tool and you will also need to pass the weight to  the function using the option **-p**
 
-## 
+
 
 ## Send the data
 
@@ -408,7 +408,7 @@ img = read_image_h5();
 figure; imshow(img(:,:,1),[])
 ```
 
-## 
+
 
 ## Conclusion
 
@@ -425,4 +425,5 @@ If you don't want to use BART, there is also a lot of different  toolbox availab
 Other possibilities for non-Cartesian acquisition is available :
 
 - Read the acquisition, fill the trajectory field and send back the  data to gadgetron in order to use the C++ gadget of the gridding
-- 
+
+  
