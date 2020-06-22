@@ -25,6 +25,9 @@ Gadgetron integration within imaging neuroscience centres. The typical work at t
   - MaRS
 - Ethernet networking
 - Separate Gadgetron Ubuntu PC
+  - Multiple Cores
+  	- (AMD / Intel; Single / Dual socket; >=128 GB)
+	- https://www.extremetech.com/computing/308501-crippled-no-longer-matlab-2020a-runs-amd-cpus-at-full-speed
   - Docker
   - Gadgetron
   - gadgetron-matlab
@@ -299,11 +302,18 @@ end
 
 - Now concentrate on data flow
 - working with data and headers within MATLAB
+	- Works but further developmentin progress (6/2020).
+	- Typically take geometry from _appropriate_ acquisition to create header for image.
 - returning images to the scanner database
 
 ## Parallel processing within Gadgetron Matlab
 
+It's difficult to get multiple cores working contunuously with block processing. Often memory allocation / setting (single threaded / slow) interspersed by cpu operation. During single threaded stages other cores available. Solution. Pipeline. Implementation in Kristoffer's functional framework. Parfeval (which NB also does the work for parfor). Simple fifo operation to keep cpus busy and minimise stalling.
+
 - Matlab multi-core processing
+ - Naive loop -> optimise loops -> vectorise -> multi-threaded built-ins
+ 	- Yair Altman "Accelerating MATLAB Performance" https://doi.org/10.1201/b17924
+	- Getting a little out of date
   - Implicit parallisation
       - LAPACK
       - Matlab vectorisation
