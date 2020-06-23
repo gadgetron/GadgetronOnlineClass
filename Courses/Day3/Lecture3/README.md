@@ -195,7 +195,7 @@ An important feature of Gadgetron is that reconstruction can occur at the scanne
 ```
 - overall reconstruction function
 	- gadgetron.external.listen called by "execute" or run to "connect"
-	- Global structure, g. Passed where necessary to steps
+	- Global structure, g. Passed where necessary to steps	
 	- Configuration "+utils" functions
 	- Switches as part of g or only for debugging configuration
 	- Setting up MATLAB Parallel Processing Toolbox parallel pool
@@ -298,6 +298,66 @@ tic, gadgetron.consume(next); toc
 end
 
 ```
+	
+You may want a utility function something analogous to the following. N.B. MATLAB containers:
+```matlab
+function g = extract_xml_parameters(xml)
+%EXTRACT_XML_PARAMETERS Read the incoming xml header
+%   Extract some useful parameters from the xml header
+%   Slice / partition direction extents, etc. refer to one volume
+
+g.xml = xml;
+fprintf(2, 'The resonance frequency is %d\n', g.xml.experimentalConditions.H1resonanceFrequency_Hz);
+
+% Number of receive channels
+try
+    g.nCha = g.xml.acquisitionSystemInformation.receiverChannels;
+catch
+    g.nCha = 1;
+end
+
+% Number of slices
+try
+    g.nSli = g.xml.encoding.encodingLimits.slice.maximum + 1;
+catch
+    g.nSli = 1;
+end
+
+% number of repetitions
+if isempty(g.xml.encoding.encodingLimits.repetition)
+    g.nRep = 1; 
+else
+    g.nRep = 1 + double(g.xml.encoding.encodingLimits.repetition.maximum);
+end
+
+% Encoded image matrix size
+g.dimEncod=structfun(@(x) x, g.xml.encoding.encodedSpace.matrixSize)';
+% Reconstructed image matrix size
+g.dimRecon=structfun(@(x) x, g.xml.encoding.reconSpace.matrixSize)';
+
+% TODO: At the moment for 2D the fov returns the slice thickness
+g.res=structfun(@(x) x, g.xml.encoding.encodedSpace.fieldOfView_mm)' ./ g.dimEncod;
+
+% Assume no acceleration in FE direction, ever.
+g.AccFact=[1 structfun(@(x) x, g.xml.encoding.parallelImaging.accelerationFactor)'];
+
+% EPI readout parameters.
+g.upl=containers.Map({g.xml.encoding.trajectoryDescription.userParameterLong.name},...
+                    {g.xml.encoding.trajectoryDescription.userParameterLong.value});
+g.upd=containers.Map({g.xml.encoding.trajectoryDescription.userParameterDouble.name},...
+                    {g.xml.encoding.trajectoryDescription.userParameterDouble.value});
+
+g.TE = g.xml.sequenceParameters.TE; % ms
+g.tAcq =  g.upl('numSamples') * g.upd('dwellTime'); % us
+g.tEchospace = (2*g.upl('rampUpTime')+g.upl('flatTopTime')); % us
+
+% Our additions to the style sheet...
+g.CAIPI = g.upl('CAIPI');
+g.SegPE = g.upl('nSeg');
+end
+
+```
+
 - '+steps' functions
 	- Functions taking and returning functions (function pointers, anyway).
 	- Analogous to gadgets in c++ Gadgetron stream.
@@ -538,64 +598,6 @@ next = @() reconstruct_1d();
 end
 ```
 
-Just for interest - you may want a utility function something analogous to the following. N.B. MATLAB containers:
-```matlab
-function g = extract_xml_parameters(xml)
-%EXTRACT_XML_PARAMETERS Read the incoming xml header
-%   Extract some useful parameters from the xml header
-%   Slice / partition direction extents, etc. refer to one volume
-
-g.xml = xml;
-fprintf(2, 'The resonance frequency is %d\n', g.xml.experimentalConditions.H1resonanceFrequency_Hz);
-
-% Number of receive channels
-try
-    g.nCha = g.xml.acquisitionSystemInformation.receiverChannels;
-catch
-    g.nCha = 1;
-end
-
-% Number of slices
-try
-    g.nSli = g.xml.encoding.encodingLimits.slice.maximum + 1;
-catch
-    g.nSli = 1;
-end
-
-% number of repetitions
-if isempty(g.xml.encoding.encodingLimits.repetition)
-    g.nRep = 1; 
-else
-    g.nRep = 1 + double(g.xml.encoding.encodingLimits.repetition.maximum);
-end
-
-% Encoded image matrix size
-g.dimEncod=structfun(@(x) x, g.xml.encoding.encodedSpace.matrixSize)';
-% Reconstructed image matrix size
-g.dimRecon=structfun(@(x) x, g.xml.encoding.reconSpace.matrixSize)';
-
-% TODO: At the moment for 2D the fov returns the slice thickness
-g.res=structfun(@(x) x, g.xml.encoding.encodedSpace.fieldOfView_mm)' ./ g.dimEncod;
-
-% Assume no acceleration in FE direction, ever.
-g.AccFact=[1 structfun(@(x) x, g.xml.encoding.parallelImaging.accelerationFactor)'];
-
-% EPI readout parameters.
-g.upl=containers.Map({g.xml.encoding.trajectoryDescription.userParameterLong.name},...
-                    {g.xml.encoding.trajectoryDescription.userParameterLong.value});
-g.upd=containers.Map({g.xml.encoding.trajectoryDescription.userParameterDouble.name},...
-                    {g.xml.encoding.trajectoryDescription.userParameterDouble.value});
-
-g.TE = g.xml.sequenceParameters.TE; % ms
-g.tAcq =  g.upl('numSamples') * g.upd('dwellTime'); % us
-g.tEchospace = (2*g.upl('rampUpTime')+g.upl('flatTopTime')); % us
-
-% Our additions to the style sheet...
-g.CAIPI = g.upl('CAIPI');
-g.SegPE = g.upl('nSeg');
-end
-
-```
 
 
 - Matlab multi-core processing
