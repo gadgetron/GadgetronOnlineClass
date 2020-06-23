@@ -143,11 +143,12 @@ This, last setting gives access to display capabilities of GPU from within the D
 An important feature of Gadgetron is that reconstruction can occur at the scanner. If you have to wait 10 minutes for the reconstruction then there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. MATLAB has a reputation of being too slow for real-time image reconstruction. But with current multi-core PC hardware we can work around bottlenecks and actually have MATLAB running rather fast. The style of this section will be a top-down  walk-through of code exerpts of an example reconstruction (segmented, accelerated, 3D EPI) to illustrate how we have used and built on the structure that Kristoffer has given us in the gadgetron-matlab examples. I have deliberately only editted the snippets minimally to illustrate "warts and all" the ease with which prototying can be performed.
 
 - Gadgetron chain configuration xml file
-	- Form fixed length buckets for transfer by the external language interface to MATLAB
-		- "n_acquistions" trigger
-		- One "Reference" bucket
+	- AcquisitionAccumulateTriggerGadget "n_acquistions" trigger
+		- Fixed length buckets for transfer by the external language interface to MATLAB
+		- One "Reference" bucket; followed by
 		- Multiple "Data" buckets
-	- Workaround where trigger flags not set as expected in sequence
+	- Workaround for the case that trigger counters are not set as expected in sequence
+	- Rule of thumb: data blocked and sent <= 10 buckets / second to MATLAB
 ```xml
 .
 .
@@ -185,8 +186,19 @@ An important feature of Gadgetron is that reconstruction can occur at the scanne
         </gadget>
 
 ```
-
-- overall reconstruction function (called by 'execute' or 'connect')
+- overall reconstruction function
+	- gadgetron.external.listen called by "execute" or run to "connect"
+	- Global structure, g. Passed where necessary to steps
+	- Configuration "+utils" functions
+	- Switches as part of g or only for debugging configuration
+	- Setting up MATLAB Parallel Processing Toolbox parallel pool
+	- "+steps" functions
+	- Conditional steps chain construction
+	- gadgetron.consume
+	
+```matlab
+>> gadgetron.external.listen(18000, @epi);
+```
 
 ```matlab
 function epi(connection)
@@ -279,7 +291,16 @@ tic, gadgetron.consume(next); toc
 end
 
 ```
-- passing buckets to MATLAB
+- Example '+steps' function
+	- Functions taking and returning functions (function pointers, anyway).
+	- Analogous to gadgets in c++ Gadgetron stream.
+	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
+	- globals, closure
+	- nested funcion to receive bucket
+	- pass-through if not reference
+	- +utils and built-ins to reconstruct the reference image
+	- "Data" structure, d, for passing between chain of functions or steps
+	- passing reference bucket to MATLAB	
 ```matlab
 function next = reconstruct_reference(input, g)
 %RECONSTRUCT_REFERENCE Reconstruct fully-encoded sensitivity reference data
@@ -352,18 +373,66 @@ next = @() reconstruct_reference(input());
 
 end
 ```
-- Example '+utils'
+- Example '+utils' function
 	- 'Normal' (first-order) functions
 	- Small utilities or components of recon.
 	- Your favourite (1000 line) reconstruction already coded.
 	- Analogous to toolboxes in c++ Gadgetron.
 	- Might be called directly and / or from steps.
+	- "Data" structure, d.
+	
+	
+```matlab
+function d = recon1d(d, a1, a2, a3, a4)
+%RECON1d TBR 1d reconstuction of a bucket of acquistions
 
-- Example '+steps' function
-	- Functions taking and returning functions (function pointers, anyway).
-	- Analogous to gadgets in c++ Gadgetron stream.
-	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
+% Only d.data is read, d.f1d created
+d.f1d = recon1d(d.data, a1, a2, a3, a4);
 
+    function f1d = recon1d(d, M, nNav, nav_padFactor, nav_smooth)
+        
+        
+        %%
+        % Reconstruct aliased image
+        %
+        [nFEAcq, nCha, nLin, nSeg, nParAcq, Acc3D] = size(d);
+        nFE = size(M,1);
+        
+        % Collect phase and 3D segments dimensions at end
+        meas=permute(d,[1 2 5 3 4 6]); %  nFEAcq, nCha, nParAcq, nlin, nSeg, Acc3D
+        
+        % Merge channels and acquired partions
+        meas=reshape(meas,[nFEAcq, nCha*nParAcq, nLin, nSeg, Acc3D]);
+        
+        if exist('pagemtimes','builtin')
+            % R2020b - new built-in function 
+            % vectorised matrix multiplication
+            f1d = pagemtimes(M(:,:,1:nLin), meas);            
+        else
+            % f1d: matrix to store the TBR-transformed phase-encoded data in projection domain
+            f1d=zeros(nFE, nCha*nParAcq, nLin, nSeg, Acc3D, 'like', single(1i));
+            
+            % M: [nFE, nFEAcq, nPEAcq];
+            % Note: because of M f1d is centred in the FoV (relevant for
+            % understanding fftshifts etc)
+            for parseg=1:Acc3D
+                % Looping over through-plane segments
+                for seg=1:nSeg
+                    % Looping over in-plane segmented readouts
+                    for line = 1 : nLin
+                        % Looping over EPI readouts (lines)
+                        f1d(:,:,line,seg,parseg)=M(:,:,line)*meas(:,:,line,seg,parseg); % nFE  nCha*nParAcq = [nFE nFEAcq]  * [nFEAcq  nCha*nParAcq], e.g. 128x(52*30) = 128x256 * 256x(52*30)
+                    end
+                end
+            end
+        end
+ .
+ .
+ .
+    end
+ end
+
+```
 - [Slide here with graphical summary of closures / control of flow]
 
 - Now concentrate on data flow
