@@ -23,7 +23,7 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 - Hardware and software
 - System Integration
 - Gadgetron MATLAB software development framework
-- Optimisation for fast reconstruction at the scanner
+- Case study: real-time 7T segmented, accelerated 3D EPI
 - Parallel processing with Gadgetron MATLAB
 
 ## Hardware and software
@@ -47,33 +47,76 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 - gadgetron-matlab 2.0.12
 - MATLAB (R2020a)
 	- Parallel Computing Toolbox
-		- Thread pools
+		- New "thread" pools
 - Reconstruction code
 
 ## System Integration
 - Software traceability
-- Integration tests
-- MATLAB within Docker
-- NVIDIA docker
+	- _Everything_ in git repositories on GitHub
+		- matlab source code, Dockerfiles, startup scripts, systemctl unit files, xml configurations, ini files, sysctl.conf parameters...
+		- Containers built from specific commits. E.g:
+```Dockerfile
+FROM ubuntu:18.04
 
-For the external language interface 'execute' to work gadgetron has to be able to call a matlab binary (in batch mode).
-
-(N.B. line continuation backslashes required at end of lines)
-
+# VERSION & REPO TAGS
+#-----------------------------------------------------------------------
+# ZFP
+ARG ZFP_SITE=https://github.com/hansenms/ZFP.git
+ARG ZFP_COMMIT=355771b
+# INTEL MKL
+ARG INTEL_GPG_SITE=https://apt.repos.intel.com/intel-gpg-keys/
+ARG INTEL_GPG_FILE=GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
+ARG INTEL_MKL_REPO=https://apt.repos.intel.com/mkl
+ARG INTEL_MKL_TAG=2019.4-070
+# GADGETRON
+ARG GADGETRON_URL=https://github.com/fil-physics/gadgetron
+ARG GADGETRON_BRANCH=master
+ARG GADGETRON_COMMIT=45035ba
+# ISMRMRD
+ARG ISMRMRD_URL=https://github.com/ismrmrd/ismrmrd.git
+ARG ISMRMRD_COMMIT=a0d2334
+ARG ISMRMRD_PYTHON_URL=https://github.com/ismrmrd/ismrmrd-python.git
+ARG ISMRMRD_PYTHON_COMMIT=ed11091
+ARG ISMRMRD_PYTHON_TOOLS_URL=https://github.com/ismrmrd/ismrmrd-python-tools.git
+ARG ISMRMRD_PYTHON_TOOLS_COMMIT=213daf6
+ARG SIEMENS_TO_ISMRMRD_URL=https://github.com/ismrmrd/siemens_to_ismrmrd.git
+ARG SIEMENS_TO_ISMRMRD_COMMIT=4077e2c
+ARG PHILIPS_TO_ISMRMRD_URL=https://github.com/ismrmrd/philips_to_ismrmrd.git
+ARG PHILIPS_TO_ISMRMRD_COMMIT=9ef92a1
+# BART
+ARG BART_REPO=https://github.com/mrirecon/bart.git 
+ARG BART_TAG=v0.4.04
+.
+.
+.
 ```
-sudo docker create --name=example_container_name \\\
-  --net=host \\\
-  --privileged \\\
-  -v /hostshare:/hostshare \\\
-  -v /usr/local/MATLAB:/usr/local/MATLAB \\\
-  -v /tmp/.X11-unix:/tmp/.X11-unix \\\
-  --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \\\
-  -e DISPLAY \\\
-  --gpus all \\\
+- Ubuntu security updates
+	- Approx. 6 monthly image system (serves as backup). Apply all patches ```apt full-upgrade```. Perform integration tests. Roll back if anything fails.
+	- Multiple, near-identical PC's to test for consistency and to swap in if urgently needed.
+- Integration tests
+	- Gadgetron has nice integration test framework with CI integrated withing GitHub
+		- buildbot
+	- Raw data and the expected reconstructed images
+	- All test cases should run and the data match (within some limit of precision)
+	- Reconstructions sumbitted after publication (peer review) as new integration tests
+	- Ensures ongoing compatability
+- Running MATLAB within a Docker container
+	- For the external language interface 'execute' to work gadgetron has to be able to call a matlab binary (in batch mode).
+	- (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
+
+```bash
+sudo docker create --name=example_container_name \
+  --net=host \
+  --privileged \
+  -v /hostshare:/hostshare \
+  -v /usr/local/MATLAB:/usr/local/MATLAB \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+  -e DISPLAY \
+  --gpus all \
   example_image_name
 ```
-
-also, in Dockerfile, since not recognised in "docker create" command line(bug? fixed?)
+	- also, in Dockerfile, since not recognised in "docker create" command line(bug? fixed?)
 ```
 env NVIDIA_DRIVER_CAPABILITIES=all
 ```
@@ -91,13 +134,14 @@ gives access to GPU from container for Matlab figures. (https://github.com/NVIDI
 - Built on Kristoffer's example reconstruction by extending on 
   - Source tree with recon .m and .xml; +steps and +utils directories.
 
-## Optimisation for Fast Recon at the Scanner
+## Case study: real-time 7T segmented, accelerated 3D EPI
 
 Unique selling point of Gadgetron is that reconstruction occurs at the scanner. If you have to wait 10 minutes there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. Matlab has the reputation of being slow. But we can work around bottlenecks and actually have Matlab running quite fast enough for on-line use on a typical multi-core workstation. The style of this section will be a top-down code walk-through to illustrate some of the structure that Kristoffer has given us.
 
 - Gadgetron chain configuration xml
 	- "n_acquistions" trigger
 ```xml
+.
 .
 .
         <!-- Human seg 0 caipi 1 pf 6/8 -->
