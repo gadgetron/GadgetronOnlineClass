@@ -101,11 +101,11 @@ ARG BART_TAG=v0.4.04
 	- Approx. 6 monthly: system disks imaged (image serves as a backup); all patches applied ```apt full-upgrade```; integration tests; roll back if anything fails.
 	- Multiple, near-identical PC's to test for consistency and to swap in if urgently needed.
 - Docker container accept latest curated Ubuntu image at time of image building.
-	- Currently 18.04 LTS
-- MATLAB installed on the host but accessible from within the Docker containers
-	- For the external language interface 'execute' to function within the container Gadgetron has to be able to call the matlab binary (in batch mode).
-	- Additionally can "connect" to a running MATLAB outside Docker (or inside, if desired) for debugging
-	- Suitable docker create command (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
+	- Currently 18.04 (LTS)
+- MATLAB is installed on the host but is made accessible from within the Docker containers
+	- For the external language interface (ELI) "execute" functionality for Gadgetron within the container the matlab binary has to be accessbile to be called (in batch mode).
+	- Additionally the Gadgetron ELI can "connect" to a running MATLAB outside Docker via host networking (or inside, if desired) for debugging
+	- Suitable "docker create" command (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
 
 ```bash
 sudo docker create --name=example_container_name \
@@ -132,20 +132,22 @@ This last setting enables GPU accelerated display capabilities for Matlab figure
 	- Also intended for cloud deployment.
 - Several, specific MATLAB versions: E.g. R2017b (update 9), R2020a (update 3), R2020b (Prerelease) are installed
 	- R2017b (https://uk.mathworks.com/matlabcentral/answers/461948-why-has-transferring-complex-data-slowed-compared-to-transferring-non-complex-data-using-the-matlab)
-	- R2020a Parallel thread pools
-	- R2020b pagemtimes
+	- R2020a parallel thread pools (https://uk.mathworks.com/help/parallel-computing/choose-between-thread-based-and-process-based-environments.html)
+	- R2020b pagemtimes (https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/products/new_products/r2020b-prerelease-release-notes.pdf)
 	
 - Separate Docker containers for different projects. Dockerfile's are git version controlled. Based on gadgetron/docker/base and gadgetron/docker/incremental.
 	- Usually built from source locally, for traceability, with only curated Ubuntu images layers pulled from DockerHub (e.g. see above Dockerfile excerpt).
 	
-## Matlab software development framework
+## Gadgetron MATLAB software development framework
 
-- Built on Kristoffer's example reconstruction by extending on 
-  - Source tree with recon .m and .xml; +steps and +utils directories.
+- Tried to keep to Kristoffer's example reconstruction functional programming paradigm
+	- https://github.com/gadgetron/gadgetron-matlab/tree/master/%2Bgadgetron/%2Bexamples
+  	- Reconstruction e.g. epi.m and epi.xml; +steps and, additionally, +utils directories
+  	- MATLAB Parallel Computing Toolbox for speeding up computation (https://uk.mathworks.com/products/parallel-computing.html)
 
 ## Case study: real-time 7T segmented, accelerated 3D EPI
 
-An important feature of Gadgetron is that reconstruction can occur at the scanner. If you have to wait 10 minutes for the reconstruction then there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. MATLAB has a reputation of being too slow for real-time image reconstruction. But with current multi-core PC hardware we can work around bottlenecks and actually have MATLAB running rather fast. The style of this section will be a top-down  walk-through of code exerpts of an example reconstruction (segmented, accelerated, 3D EPI) to illustrate how we have used and built on the structure that Kristoffer has given us in the gadgetron-matlab examples. I have deliberately only editted the snippets minimally to illustrate "warts and all" the ease with which prototying can be performed.
+An important feature of Gadgetron is that reconstruction can occur at the scanner with the resulting images stored in the scanner database. If you have to wait 10 minutes for the reconstruction then there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. MATLAB has a reputation of being too slow for real-time image reconstruction. But with current multi-core PC hardware we can work around bottlenecks and actually have MATLAB running rather fast. The style of this section will be a top-down  walk-through of code exerpts of an example reconstruction (segmented, accelerated, 3D EPI) to illustrate how we have used and built on the structure that Kristoffer has given us in the gadgetron-matlab examples. I have deliberately only edited the snippets minimally to illustrate "warts and all" the ease with which prototying can now be performed.
 
 - Gadgetron chain configuration xml file
 	- AcquisitionAccumulateTriggerGadget "n_acquistions" trigger
@@ -296,7 +298,7 @@ tic, gadgetron.consume(next); toc
 end
 
 ```
-- Example '+steps' function
+- '+steps' functions
 	- Functions taking and returning functions (function pointers, anyway).
 	- Analogous to gadgets in c++ Gadgetron stream.
 	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
@@ -305,7 +307,7 @@ end
 	- pass-through if not reference
 	- +utils and built-ins to reconstruct the reference image
 	- "Data" structure, d, for passing between chain of functions or steps
-	- passing reference bucket to MATLAB	
+	- Example: passing reference bucket to MATLAB	
 ```matlab
 function next = reconstruct_reference(input, g)
 %RECONSTRUCT_REFERENCE Reconstruct fully-encoded sensitivity reference data
@@ -378,14 +380,14 @@ next = @() reconstruct_reference(input());
 
 end
 ```
-- Example '+utils' function
+- '+utils' function
 	- 'Normal' (first-order) functions
 	- Small utilities or components of recon.
 	- Your favourite (1000 line) reconstruction already coded.
 	- Analogous to toolboxes in c++ Gadgetron.
 	- Might be called directly and / or from steps.
-	- "Data" structure, d.
-	
+	- "Data" structure, d
+	- Example: EPI non-uniform Fourier transform (for ramp-sampled data)
 	
 ```matlab
 function d = recon1d(d, a1, a2, a3, a4)
@@ -438,17 +440,103 @@ d.f1d = recon1d(d.data, a1, a2, a3, a4);
  end
 
 ```
-- [Slide here with graphical summary of closures / control of flow]
-
 - Now concentrate on data flow
 - working with data and headers within MATLAB
 	- Works but further developmentin progress (6/2020).
 	- Typically take geometry from _appropriate_ acquisition to create header for image.
-- returning images to the scanner database
+- Example: returning images to the scanner database
+```matlab
+function next = mrm_volume(input, g)
+%MRM_VOLUME Convert volume to ISMRM multi slice image (step).
+
+    function mrmimage = mrm_volume(d)
+
+        vol_data=squeeze(abs(d.vol)*1e3);
+        headerScan=structfun(@(arr) arr(:, end)', d.header, 'UniformOutput', false);
+        
+        mrmimage = gadgetron.types.Image.from_data(vol_data, headerScan);
+        mrmimage.header.image_type = gadgetron.types.Image.MAGNITUDE;
+.
+.
+.
+        mrmimage.header.repetition     = headerScan.repetition;
+        mrmimage.header.channels       = 1;
+    end
+
+next = @() mrm_volume(input());
+end
+```
 
 ## Parallel processing within Gadgetron Matlab
 
-It's difficult to get multiple cores working contunuously with block processing. Often memory allocation / setting (single threaded / slow) interspersed by cpu operation. During single threaded stages other cores available. Solution. Pipeline. Implementation in Kristoffer's functional framework. Parfeval (which NB also does the work for parfor). Simple fifo operation to keep cpus busy and minimise stalling.
+It's difficult to get multiple cores working continuously with block processing. Often memory allocation / setting (single threaded / slow) interspersed by multicore cpu operation. During single threaded stages other cores available. Solution. Pipeline. Implementation in Kristoffer's functional framework. Parfeval (which NB also does the work for parfor). Simple fifo operation to keep cpus busy and minimise stalling.
+
+```matlab
+function next = reconstruct_1d(input, g)
+%RECONSTRUCT_1D Trajectory based reconstruction of multi partition EPI volume
+%   Detailed explanation goes here
+
+nFEAcq  = g.upl('numSamples');            % Typically will be nFE * over-sampling factor of 2
+nNav    = g.upl('numberOfNavigators');    % No. of phase reference echoes
+Acc3D   = g.AccFact(3);                   % Acceleration factor in partition direction
+nParAcq = g.dimEncod(3) / Acc3D;          % No. of partitions acquired
+
+% Processing choices:
+nav_smooth          = 10;           % Smoothing to be applied to navigators [k-space span]
+nav_padFactor       = 2;            % Padding multiple for extrapolating navigator correction
+
+% Parallel processing
+F=parallel.FevalFuture;
+jobnum=0;
+readnum=1;
+
+    function d = reconstruct_1d()
+        
+        %%%%%%%%%%%%%%%%%%%%%%
+        % Read Finished Jobs %
+        %%%%%%%%%%%%%%%%%%%%%%
+        %  Is the next image available?
+        if length(F) >=1 && strcmp({F(1).State},'finished')
+            % Return it
+            d = fetchOutputs(F(1));
+            F(1)=[];
+            disp([jobnum readnum])
+            readnum=readnum+1;
+            return
+        end
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Get Next Volume of Raw Data %
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        d = input();
+                
+        %%%%%%%%%%%%%%%%%%
+        % Submit New Job %
+        %%%%%%%%%%%%%%%%%%
+%       d.f1d=utils.recon1d(d.data, g.M, nNav, nav_padFactor, nav_smooth);        
+        
+        jobnum=jobnum+1;
+
+        F(jobnum)=parfeval(@utils.recon1d, 1, d, g.M, nNav, nav_padFactor, nav_smooth);
+        
+        % Clear 'unavailable' slots (below jobnum)
+        F(cellfun(@isempty,{F.Function}))=[];
+        disp(F);
+        
+        if jobnum==g.nRep % || rem(jobnum,25)==0
+            % End of scanner run
+            wait(F)
+        end
+        
+        % Tail recursion to check again
+        d = reconstruct_1d();
+        
+    end
+
+next = @() reconstruct_1d();
+
+end
+```
 
 - Matlab multi-core processing
  - Naive loop -> optimise loops -> vectorise -> multi-threaded built-ins
@@ -460,14 +548,9 @@ It's difficult to get multiple cores working contunuously with block processing.
       - MATLAB Parallel Toolbox
       - Kristoffer's functional programming paradigm steps
 - IceGadgetron xml configs to get raw data and allow image database receipt
-- github ismrmrd mrd handling
+	- Hui's talk on where to place the emitter and injector functors in the ice chain
 
-### If time permits
-- Physiological waveform handling with Gadgetron and MATLAB
-- Siemens pulse / ecg / breathing belt
-- Timestamping circuitry
-
-## Conclusion
-- Have built this with long term on-going collaboration with others.
-- If you have Matlab knowledge and develop, please collaborate and feedback.
-- Hangouts every Friday, 3pm CET. Videoconference link posted on https://groups.google.com/forum/#!forum/gadgetron.
+## Conclusion / Acknowledements
+- I have been involved in Gadgetron since 2012, benefitting from and trying to encourage others. I would like to give special credit to Michael Hansen and Souheil Inati for the first version of Gadgetron Matlab and to David and Kristoffer for their fantastic external language interface re-engineering of the concept.
+- If you have Matlab or other knowledge and want to contribute to the future of Gadgetron development, please collaborate and give us feedback.
+- Developer hangouts are every Friday, 3pm CET. Videoconference links are posted on https://groups.google.com/forum/#!forum/gadgetron.
