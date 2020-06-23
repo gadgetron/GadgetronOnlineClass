@@ -538,6 +538,66 @@ next = @() reconstruct_1d();
 end
 ```
 
+Just for interest - you may want a utility function something analogous to the following. N.B. MATLAB containers:
+```matlab
+function g = extract_xml_parameters(xml)
+%EXTRACT_XML_PARAMETERS Read the incoming xml header
+%   Extract some useful parameters from the xml header
+%   Slice / partition direction extents, etc. refer to one volume
+
+g.xml = xml;
+fprintf(2, 'The resonance frequency is %d\n', g.xml.experimentalConditions.H1resonanceFrequency_Hz);
+
+% Number of receive channels
+try
+    g.nCha = g.xml.acquisitionSystemInformation.receiverChannels;
+catch
+    g.nCha = 1;
+end
+
+% Number of slices
+try
+    g.nSli = g.xml.encoding.encodingLimits.slice.maximum + 1;
+catch
+    g.nSli = 1;
+end
+
+% number of repetitions
+if isempty(g.xml.encoding.encodingLimits.repetition)
+    g.nRep = 1; 
+else
+    g.nRep = 1 + double(g.xml.encoding.encodingLimits.repetition.maximum);
+end
+
+% Encoded image matrix size
+g.dimEncod=structfun(@(x) x, g.xml.encoding.encodedSpace.matrixSize)';
+% Reconstructed image matrix size
+g.dimRecon=structfun(@(x) x, g.xml.encoding.reconSpace.matrixSize)';
+
+% TODO: At the moment for 2D the fov returns the slice thickness
+g.res=structfun(@(x) x, g.xml.encoding.encodedSpace.fieldOfView_mm)' ./ g.dimEncod;
+
+% Assume no acceleration in FE direction, ever.
+g.AccFact=[1 structfun(@(x) x, g.xml.encoding.parallelImaging.accelerationFactor)'];
+
+% EPI readout parameters.
+g.upl=containers.Map({g.xml.encoding.trajectoryDescription.userParameterLong.name},...
+                    {g.xml.encoding.trajectoryDescription.userParameterLong.value});
+g.upd=containers.Map({g.xml.encoding.trajectoryDescription.userParameterDouble.name},...
+                    {g.xml.encoding.trajectoryDescription.userParameterDouble.value});
+
+g.TE = g.xml.sequenceParameters.TE; % ms
+g.tAcq =  g.upl('numSamples') * g.upd('dwellTime'); % us
+g.tEchospace = (2*g.upl('rampUpTime')+g.upl('flatTopTime')); % us
+
+% Our additions to the style sheet...
+g.CAIPI = g.upl('CAIPI');
+g.SegPE = g.upl('nSeg');
+end
+
+```
+
+
 - Matlab multi-core processing
  - Naive loop -> optimise loops -> vectorise -> multi-threaded built-ins
  	- Yair Altman "Accelerating MATLAB Performance" https://doi.org/10.1201/b17924
@@ -549,6 +609,9 @@ end
       - Kristoffer's functional programming paradigm steps
 - IceGadgetron xml configs to get raw data and allow image database receipt
 	- Hui's talk on where to place the emitter and injector functors in the ice chain
+
+
+
 
 ## Conclusion / Acknowledements
 - I have been involved in Gadgetron since 2012, benefitting from and trying to encourage others. I would like to give special credit to Michael Hansen and Souheil Inati for the first version of Gadgetron Matlab and to David and Kristoffer for their fantastic external language interface re-engineering of the concept.
