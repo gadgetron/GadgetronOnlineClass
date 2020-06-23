@@ -53,7 +53,7 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 ## System Integration
 - Software traceability
 	- _Everything_ in git repositories on GitHub
-		- matlab source code, Dockerfiles, startup scripts, systemctl unit files, xml configurations, ini files, sysctl.conf parameters...
+		- matlab source code, c++ source code, libraries, Dockerfiles, startup scripts, systemctl unit files, xml configurations, ini files, sysctl.conf parameters...
 		- Containers built from specific commits. E.g:
 ```Dockerfile
 FROM ubuntu:18.04
@@ -91,13 +91,13 @@ ARG BART_TAG=v0.4.04
 .
 ```
 - Ubuntu security updates
-	- Approx. 6 monthly image system (serves as backup). Apply all patches ```apt full-upgrade```. Perform integration tests. Roll back if anything fails.
+	- Approx. 6 monthly: system disks imaged (serves as backup); all patches applied ```apt full-upgrade```; integration tests; roll back if anything fails.
 	- Multiple, near-identical PC's to test for consistency and to swap in if urgently needed.
 - Integration tests
-	- Gadgetron has nice integration test framework with CI integrated withing GitHub
+	- Gadgetron has nice integration test framework and continuous integration (CI) integrated within GitHub
 		- buildbot
-	- Raw data and the expected reconstructed images
-	- All test cases should run and the data match (within some limit of precision)
+	- Raw data and the corresponding expected reconstructed images
+	- All test cases should run and the images match (within some limit of precision)
 	- Reconstructions sumbitted after publication (peer review) as new integration tests
 	- Ensures ongoing compatability
 - MATLAB installed on the host but accessbile within the Docker containers
@@ -124,12 +124,15 @@ env NVIDIA_DRIVER_CAPABILITIES=all
 This, last setting gives access to display capabilities of GPU from within the Docker container for Matlab to plot figures. (https://github.com/NVIDIA/nvidia-container-runtime)
   
 - Allows for Gadgetron to "execute" MATLAB from withing the Docker container; or to "connect" to MATLAB (inside or) outside docker for debugging.
-
-- N.B. Matlab may alternatively be installed completely _inside_ the container https://github.com/mathworks-ref-arch/matlab-dockerfile
- 	- Mathworks' curated Dockerfiles, etc.
- 	- Dependencies, Licensing, Toolboxes, etc.
-	- Also intended for cloud deployment.
-
+	- N.B. Matlab may alternatively be installed completely _inside_ the container https://github.com/mathworks-ref-arch/matlab-dockerfile
+ 		- Mathworks' curated Dockerfiles, etc.
+ 		- Dependencies, Licensing, Toolboxes, etc.
+		- Also intended for cloud deployment.
+	- Several, specific MATLAB versions: E.g. R2017b (update 9), R2020a (update 3), R2020b (Prerelease).
+	
+- Separate Docker containers for different projects. Dockerfiles git version controlled. Based on gadgetron/Docker/base and gadgetron/Docker/incremental.
+	- Usually built from source locally, for traceability, with only Ubuntu pulled from DockerHub (e.g. see above example).
+	
 ## Matlab software development framework
 
 - Built on Kristoffer's example reconstruction by extending on 
@@ -137,10 +140,14 @@ This, last setting gives access to display capabilities of GPU from within the D
 
 ## Case study: real-time 7T segmented, accelerated 3D EPI
 
-Unique selling point of Gadgetron is that reconstruction occurs at the scanner. If you have to wait 10 minutes there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. Matlab has the reputation of being slow. But we can work around bottlenecks and actually have Matlab running quite fast enough for on-line use on a typical multi-core workstation. The style of this section will be a top-down code walk-through to illustrate some of the structure that Kristoffer has given us.
+An important feature of Gadgetron is that reconstruction can occur at the scanner. If you have to wait 10 minutes for the reconstruction then there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. MATLAB has a reputation of being too slow for real-time image reconstruction. But with current multi-core PC hardware we can work around bottlenecks and actually have MATLAB running rather fast. The style of this section will be a top-down  walk-through of code exerpts of an example reconstruction (segmented, accelerated, 3D EPI) to illustrate how we have used and built on the structure that Kristoffer has given us in the gadgetron-matlab examples. I have deliberately only editted the snippets minimally to illustrate "warts and all" the ease with which prototying can be performed.
 
-- Gadgetron chain configuration xml
-	- "n_acquistions" trigger
+- Gadgetron chain configuration xml file
+	- Form fixed length buckets for transfer by the external language interface to MATLAB
+		- "n_acquistions" trigger
+		- One "Reference" bucket
+		- Multiple "Data" buckets
+	- Workaround where trigger flags not set as expected in sequence
 ```xml
 .
 .
@@ -272,19 +279,6 @@ tic, gadgetron.consume(next); toc
 end
 
 ```
-
-- Example '+utils'
-	- 'Normal' (first-order) functions
-	- Small utilities or components of recon.
-	- Your favourite (1000 line) reconstruction already coded.
-	- Analogous to toolboxes in c++ Gadgetron.
-	- Might be called directly and / or from steps.
-
-- Example '+steps' function
-	- Functions taking and returning functions (function pointers, anyway).
-	- Analogous to gadgets in c++ Gadgetron stream.
-	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
-
 - passing buckets to MATLAB
 ```matlab
 function next = reconstruct_reference(input, g)
@@ -358,6 +352,18 @@ next = @() reconstruct_reference(input());
 
 end
 ```
+- Example '+utils'
+	- 'Normal' (first-order) functions
+	- Small utilities or components of recon.
+	- Your favourite (1000 line) reconstruction already coded.
+	- Analogous to toolboxes in c++ Gadgetron.
+	- Might be called directly and / or from steps.
+
+- Example '+steps' function
+	- Functions taking and returning functions (function pointers, anyway).
+	- Analogous to gadgets in c++ Gadgetron stream.
+	- I've used for translating formatting and (parallel process) queueing data for util functions to actually process.
+
 - [Slide here with graphical summary of closures / control of flow]
 
 - Now concentrate on data flow
