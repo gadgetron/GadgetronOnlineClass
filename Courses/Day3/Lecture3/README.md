@@ -22,28 +22,37 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 
 - Hardware and software
 - System Integration
-- Matlab software development framework
-- Optimisation for Fast Recon at the Scanner
-- Parallel processing within Gadgetron Matlab 
+- Gadgetron MATLAB software development framework
+- Optimisation for fast reconstruction at the scanner
+- Parallel processing with Gadgetron MATLAB
 
 ## Hardware and software
 
-- Siemens scanner
-  - IceGadgetron
-  - MaRS
+- Siemens scanners (1.5T Avanto VB17, 3T Prisma VE11C, 7T Terra VE12U)
+	- IceGadgetron
+	- MaRS (Avanto: MRIR)
 - Ethernet networking
-- Separate Gadgetron Ubuntu PC
-  - Multiple Cores
-  	- (AMD / Intel; Single / Dual socket; >=128 GB)
+	- 1 Gb/s, 10 Gb/s (> 32 channels)
+	- Fibre optic for electrical isolation
+- Separate Gadgetron PC
+  - E.g. Dell T7910 Workstation (now dated)
+  - Multiple Cores, large memory
+  	- AMD / Intel; Single / Dual socket; >=128 GB
 	- https://www.extremetech.com/computing/308501-crippled-no-longer-matlab-2020a-runs-amd-cpus-at-full-speed
-  - Docker
-  - Gadgetron
-  - gadgetron-matlab
-  - Matlab (R2020a). Parallel Computing Toolbox. Thread pools.
-  - Reconstruction code
+	- For robustness one PC per scanner, although could share one PC between scanners for economy
+- Ubuntu 20.04 Long Term Support
+- Docker 19.03
+	- Natively supports NVIDIA gpu card exposure
+- Gadgetron 4.1
+- gadgetron-matlab 2.0.12
+- MATLAB (R2020a)
+	- Parallel Computing Toolbox
+		- Thread pools
+- Reconstruction code
 
 ## System Integration
 - Software traceability
+- Integration tests
 - MATLAB within Docker
 - NVIDIA docker
 
