@@ -100,7 +100,7 @@ ARG BART_TAG=v0.4.04
 	- All test cases should run and the data match (within some limit of precision)
 	- Reconstructions sumbitted after publication (peer review) as new integration tests
 	- Ensures ongoing compatability
-- Running MATLAB within a Docker container
+- MATLAB installed on the host but accessbile within the Docker containers
 	- For the external language interface 'execute' to work gadgetron has to be able to call a matlab binary (in batch mode).
 	- (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
 
@@ -116,18 +116,19 @@ sudo docker create --name=example_container_name \
   --gpus all \
   example_image_name
 ```
-	- also, in Dockerfile, since not recognised in "docker create" command line(bug? fixed?)
-```
+and in the Dockerfile, since is not recognised in "docker create" command line(this may be a bug which has been fixed).
+```Dockerfile
 env NVIDIA_DRIVER_CAPABILITIES=all
 ```
-gives access to GPU from container for Matlab figures. (https://github.com/NVIDIA/nvidia-container-runtime)
+	
+This, last setting gives access to display capabilities of GPU from within the Docker container for Matlab to plot figures. (https://github.com/NVIDIA/nvidia-container-runtime)
   
-- N.B. https://github.com/mathworks-ref-arch/matlab-dockerfile
-	- Matlab installed _inside_ the container (e.g. for the cloud).
+- Allows for Gadgetron to "execute" MATLAB from withing the Docker container; or to "connect" to MATLAB (inside or) outside docker for debugging.
+
+- N.B. Matlab may alternatively be installed completely _inside_ the container https://github.com/mathworks-ref-arch/matlab-dockerfile
  	- Mathworks' curated Dockerfiles, etc.
  	- Dependencies, Licensing, Toolboxes, etc.
- 
-- "execute" MATLAB in docker; "connect" to MATLAB (inside or) outside docker for debugger.
+	- Also intended for cloud deployment.
 
 ## Matlab software development framework
 
