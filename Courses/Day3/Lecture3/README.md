@@ -12,13 +12,21 @@ Affiliations:
 
 [DRAFT IN PREPARATION]
 
-This lecture presents a real-world use of Gadgetron and MATLAB at the scanner.
+Real-world integration of Gadgetron and MATLAB with the scanner.
 
 ## Context
 
-Gadgetron integration within imaging neuroscience centres. The typical work at the centres involves multiple subject studies (e.g. 20 participants) with scanning over a period of weeks to months per study. Several, different, ongoing studies share the same scanners so we need robust separation of application. Also for both smooth operation and as for _scientific_ reproducibility we have to provide a robust, portable and tracable environment. Docker containers for standard environment and isolation between ongoing studies, physics development and production studies. Git repositories on Github for tracability.
+We are using currently using Gadgetron on five MRI scanners at two imaging neuroscience centres. The typical activity at the centres involves multiple subject studies (e.g. 20 participants) extending over a period of weeks to months per study. Image reconstruction must be performed in real time at the scanner unless huge volumes of raw k-space data are to be accrued, which is only rarely sensible for our neuroscience applications. Several, different, ongoing studies share the same scanners so we need robust separation of applications. For smooth practical operation and for scientific reproducibility a robust, portable and tracable environment is necesary. Docker containers provide a standard environment and isolation between ongoing sequence and reconstruction development and "production" studies. Git repositories on Github serve for tracability.
 
-## Overview of hardware and software component overview
+## Overview
+
+- Hardware and software
+- System Integration
+- Matlab software development framework
+- Optimisation for Fast Recon at the Scanner
+- Parallel processing within Gadgetron Matlab 
+
+## Hardware and software
 
 - Siemens scanner
   - IceGadgetron
@@ -34,9 +42,7 @@ Gadgetron integration within imaging neuroscience centres. The typical work at t
   - Matlab (R2020a). Parallel Computing Toolbox. Thread pools.
   - Reconstruction code
 
-## Topics covered
-
-### Integration
+## System Integration
 - Software traceability
 - MATLAB within Docker
 - NVIDIA docker
@@ -71,12 +77,12 @@ gives access to GPU from container for Matlab figures. (https://github.com/NVIDI
  
 - "execute" MATLAB in docker; "connect" to MATLAB (inside or) outside docker for debugger.
 
-### Matlab software development framework
+## Matlab software development framework
 
 - Built on Kristoffer's example reconstruction by extending on 
   - Source tree with recon .m and .xml; +steps and +utils directories.
 
-### Optimisation for Fast Recon at the Scanner
+## Optimisation for Fast Recon at the Scanner
 
 Unique selling point of Gadgetron is that reconstruction occurs at the scanner. If you have to wait 10 minutes there is not such a big benefit using Gadgetron over exporting the data and reconstructing offline. Matlab has the reputation of being slow. But we can work around bottlenecks and actually have Matlab running quite fast enough for on-line use on a typical multi-core workstation. The style of this section will be a top-down code walk-through to illustrate some of the structure that Kristoffer has given us.
 
