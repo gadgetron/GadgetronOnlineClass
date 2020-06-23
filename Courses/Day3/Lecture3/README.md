@@ -16,7 +16,7 @@ Real-world integration of Gadgetron and MATLAB with the scanner.
 
 ## Context
 
-We are using currently using Gadgetron on five MRI scanners at two imaging neuroscience centres. The typical activity at the centres involves multiple subject studies (e.g. 20 participants) extending over a period of weeks to months per study. Image reconstruction must be performed in real time at the scanner unless huge volumes of raw k-space data are to be accrued, which is only rarely sensible for our neuroscience applications. Several, different, ongoing studies share the same scanners so we need robust separation of applications. For smooth practical operation and for scientific reproducibility a robust, portable and tracable environment is necesary. Docker containers provide a standard environment and isolation between ongoing sequence and reconstruction development and "production" studies. Git repositories on Github serve for tracability.
+We are using currently using Gadgetron on five MRI scanners at two imaging neuroscience centres. The typical activity at the centres involves multiple subject studies (e.g. 20 participants) extending over a period of weeks to months per study. Image reconstruction must be performed in real time at the scanner unless huge volumes of raw k-space data are to be accrued, which is only rarely sensible for our neuroscience applications. Several, different, ongoing studies share the same scanners so we need robust separation of applications. For smooth practical operation and for scientific reproducibility a robust, portable and tracable environment is necesary. Docker containers provide a standard environment and isolation between ongoing sequence and reconstruction development and "production" studies. Git repositories on Github serve for traceability.
 
 ## Overview
 
@@ -35,12 +35,12 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 	- 1 Gb/s, 10 Gb/s (> 32 channels)
 	- Fibre optic for electrical isolation
 - Separate Gadgetron PC
-  - E.g. Dell T7910 Workstation (now dated)
+  - E.g. Dell T7910 Workstation (Reliable. Now four years old.)
   - Multiple Cores, large memory
   	- AMD / Intel; Single / Dual socket; >=128 GB
 	- https://www.extremetech.com/computing/308501-crippled-no-longer-matlab-2020a-runs-amd-cpus-at-full-speed
 	- For robustness one PC per scanner, although could share one PC between scanners for economy
-- Ubuntu 20.04 Long Term Support
+- Ubuntu 18.04 or 20.04 Long Term Support
 - Docker 19.03
 	- Natively supports NVIDIA gpu card exposure
 - Gadgetron 4.1
@@ -54,7 +54,7 @@ We are using currently using Gadgetron on five MRI scanners at two imaging neuro
 - Software traceability
 	- _Everything_ in git repositories on GitHub
 		- matlab source code, c++ source code, libraries, Dockerfiles, startup scripts, systemctl unit files, xml configurations, ini files, sysctl.conf parameters...
-		- Containers built from specific commits. E.g:
+		- Containers built from specific source commits. E.g:
 ```Dockerfile
 FROM ubuntu:18.04
 
@@ -90,19 +90,22 @@ ARG BART_TAG=v0.4.04
 .
 .
 ```
-- Ubuntu security updates
-	- Approx. 6 monthly: system disks imaged (serves as backup); all patches applied ```apt full-upgrade```; integration tests; roll back if anything fails.
-	- Multiple, near-identical PC's to test for consistency and to swap in if urgently needed.
 - Integration tests
 	- Gadgetron has nice integration test framework and continuous integration (CI) integrated within GitHub
 		- buildbot
 	- Raw data and the corresponding expected reconstructed images
 	- All test cases should run and the images match (within some limit of precision)
-	- Reconstructions sumbitted after publication (peer review) as new integration tests
+	- Reconstructions sumbitted after peer reviewed publication as new integration tests
 	- Ensures ongoing compatability
-- MATLAB installed on the host but accessbile within the Docker containers
-	- For the external language interface 'execute' to work gadgetron has to be able to call a matlab binary (in batch mode).
-	- (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
+- Host Ubuntu security updates
+	- Approx. 6 monthly: system disks imaged (image serves as a backup); all patches applied ```apt full-upgrade```; integration tests; roll back if anything fails.
+	- Multiple, near-identical PC's to test for consistency and to swap in if urgently needed.
+- Docker container accept latest curated Ubuntu image at time of image building.
+	- Currently 18.04 LTS
+- MATLAB installed on the host but accessible from within the Docker containers
+	- For the external language interface 'execute' to function within the container Gadgetron has to be able to call the matlab binary (in batch mode).
+	- Additionally can "connect" to a running MATLAB outside Docker (or inside, if desired) for debugging
+	- Suitable docker create command (N.B. line continuation backslashes required at end of lines, common for long Docker commands)
 
 ```bash
 sudo docker create --name=example_container_name \
@@ -116,22 +119,24 @@ sudo docker create --name=example_container_name \
   --gpus all \
   example_image_name
 ```
-and in the Dockerfile, since is not recognised in "docker create" command line(this may be a bug which has been fixed).
+and in the corresponding Dockerfile, since the option is not recognised in the "docker create" command line (this may be a bug which has been fixed).
 ```Dockerfile
-env NVIDIA_DRIVER_CAPABILITIES=all
+ENV NVIDIA_DRIVER_CAPABILITIES=all
 ```
-	
-This, last setting gives access to display capabilities of GPU from within the Docker container for Matlab to plot figures. (https://github.com/NVIDIA/nvidia-container-runtime)
+
+This last setting enables GPU accelerated display capabilities for Matlab figures and GUI when running within the Docker container. (https://github.com/NVIDIA/nvidia-container-runtime) as well as access to CUDA GPU computation by the MATLAB parallel computation toolbox.
   
-- Allows for Gadgetron to "execute" MATLAB from withing the Docker container; or to "connect" to MATLAB (inside or) outside docker for debugging.
-	- N.B. Matlab may alternatively be installed completely _inside_ the container https://github.com/mathworks-ref-arch/matlab-dockerfile
- 		- Mathworks' curated Dockerfiles, etc.
- 		- Dependencies, Licensing, Toolboxes, etc.
-		- Also intended for cloud deployment.
-	- Several, specific MATLAB versions: E.g. R2017b (update 9), R2020a (update 3), R2020b (Prerelease).
+- N.B. Matlab may alternatively be installed completely _inside_ the container https://github.com/mathworks-ref-arch/matlab-dockerfile
+	- Mathworks' curated Dockerfiles, etc.
+	- Dependencies, Licensing, Toolboxes, etc.
+	- Also intended for cloud deployment.
+- Several, specific MATLAB versions: E.g. R2017b (update 9), R2020a (update 3), R2020b (Prerelease) are installed
+	- R2017b (https://uk.mathworks.com/matlabcentral/answers/461948-why-has-transferring-complex-data-slowed-compared-to-transferring-non-complex-data-using-the-matlab)
+	- R2020a Parallel thread pools
+	- R2020b pagemtimes
 	
-- Separate Docker containers for different projects. Dockerfiles git version controlled. Based on gadgetron/Docker/base and gadgetron/Docker/incremental.
-	- Usually built from source locally, for traceability, with only Ubuntu pulled from DockerHub (e.g. see above example).
+- Separate Docker containers for different projects. Dockerfile's are git version controlled. Based on gadgetron/docker/base and gadgetron/docker/incremental.
+	- Usually built from source locally, for traceability, with only curated Ubuntu images layers pulled from DockerHub (e.g. see above Dockerfile excerpt).
 	
 ## Matlab software development framework
 
