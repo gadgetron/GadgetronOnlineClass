@@ -500,11 +500,13 @@ d.f1d = recon1d(d.data, a1, a2, a3, a4);
  end
 
 ```
-- Now concentrate on data flow
+
 - working with data and headers within MATLAB
-	- Works but further developmentin progress (6/2020).
+	- Works but further development in progress (6/2020).
 	- Typically take geometry from _appropriate_ acquisition to create header for image.
+	- N.B. d.header, d.vol - information only available once buckets have arrived, unlike for g.
 - Example: returning images to the scanner database
+
 ```matlab
 function next = mrm_volume(input, g)
 %MRM_VOLUME Convert volume to ISMRM multi slice image (step).
@@ -529,7 +531,26 @@ end
 
 ## Parallel processing within Gadgetron Matlab
 
-It's difficult to get multiple cores working continuously with block processing. Often memory allocation / setting (single threaded / slow) interspersed by multicore cpu operation. During single threaded stages other cores available. Solution. Pipeline. Implementation in Kristoffer's functional framework. Parfeval (which NB also does the work for parfor). Simple fifo operation to keep cpus busy and minimise stalling.
+- Matlab multi-core processing
+	- Yair Altman "Accelerating MATLAB Performance" https://doi.org/10.1201/b17924
+		- Getting a little dated
+	- Implicit parallisation
+      		- LAPACK (e.g. svd)
+      		- Vectorisation (e.g. ```matlab randn(1,1,10).*rand(1,10,1)``` and other similar idioms)
+		- Multi-threaded built-ins (e.g. from R2020b pagemtimes() - multiple matrix multiplicaton)
+	- MATLAB Parallel Toolbox
+		- Since R2020a thread pools
+	
+- Kristoffer's functional programming paradigm steps are executed by MATLAB sequentially.
+	- Difficult to get multiple cores working continuously with block processing.
+	- Often memory allocation / setting (single threaded / slow) interspersed by multicore cpu operation
+	- During single threaded stages other cores are idle.
+
+- Solution for EPI (multiple, separably reconstruced repetitions)
+	- Pipeline
+	- Implementation within Kristoffer's +steps functional framework
+	- MATLAB PCT parfeval (NB this function also does the work under the bonnet for "parfor")
+	- Simple FIFO operation to keep cpus busy and minimise stalling
 
 ```matlab
 function next = reconstruct_1d(input, g)
@@ -598,24 +619,7 @@ next = @() reconstruct_1d();
 end
 ```
 
-
-
-- Matlab multi-core processing
- - Naive loop -> optimise loops -> vectorise -> multi-threaded built-ins
- 	- Yair Altman "Accelerating MATLAB Performance" https://doi.org/10.1201/b17924
-	- Getting a little out of date
-  - Implicit parallisation
-      - LAPACK
-      - Matlab vectorisation
-      - MATLAB Parallel Toolbox
-      - Kristoffer's functional programming paradigm steps
-- IceGadgetron xml configs to get raw data and allow image database receipt
-	- Hui's talk on where to place the emitter and injector functors in the ice chain
-
-
-
-
 ## Conclusion / Acknowledements
-- I have been involved in Gadgetron since 2012, benefitting from and trying to encourage others. I would like to give special credit to Michael Hansen and Souheil Inati for the first version of Gadgetron Matlab and to David and Kristoffer for their fantastic external language interface re-engineering of the concept.
-- If you have Matlab or other knowledge and want to contribute to the future of Gadgetron development, please collaborate and give us feedback.
+- I have been involved helping to get MATLAB and Gadgetron integrated since 2012 and have had fantastic interactions with great people. I would like to give special credit to Michael Hansen and Souheil Inati for the first version of Gadgetron Matlab and to David Hansen and Kristoffer Knudsen for their fantastic external language interface re-engineering of the concept.
+- If you have Matlab or other knowledge and want to contribute to the future of Gadgetron development, please collaborate.
 - Developer hangouts are every Friday, 3pm CET. Videoconference links are posted on https://groups.google.com/forum/#!forum/gadgetron.
