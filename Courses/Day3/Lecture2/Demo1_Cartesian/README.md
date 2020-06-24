@@ -1,13 +1,13 @@
 ## Demo 1: MP2RAGE reconstruction
 
-[Bucket]: https://github.com/gadgetron/GadgetronOnlineClass/blob/master/Courses/Day3/Lecture2/Exercises-correction/bucket/Lecture%209%20%20Prototyping%20at%20the%20scanner%20with%20MATLAB%20%20part%202.md	""Bucket exercise""
+[Bucket demo](https://github.com/gadgetron/GadgetronOnlineClass/blob/master/Courses/Day3/Lecture2/Exercises-correction/bucket/Lecture%209%20%20Prototyping%20at%20the%20scanner%20with%20MATLAB%20%20part%202.md) (not demonstrated live -> homework for you!)
 
-Simplicity often leads to use the gadget **BucketToBuffer** before calling Matlab. However in highly under-sampled cases, using the bucket is faster than loading the ReconData (Buffer) object. For example for sparse acquisition  with a lot of un-acquired lines like Compressed-Sensing ([see this issue](https://github.com/gadgetron/gadgetron/issues/808)) :
+Simplicity often leads to use the gadget **BucketToBuffer** before calling Matlab. However in highly under-sampled cases, using the bucket is faster than loading the ReconData (Buffer) object. A good example is a sparse acquisition with a lot of un-acquired lines like Compressed-Sensing ([see this issue](https://github.com/gadgetron/gadgetron/issues/808)) :
 
-To give some numbers of processing times, for a k-space size of : **Data dimensions [RO E1 E2 CHA N S SLC] : [320 320 240 64 2 1 1]** with an acceleration factor of 8.
+To give some numbers of processing times on a typical PC, for a k-space size of : **Data dimensions [RO E1 E2 CHA N S SLC] : [320 320 240 64 2 1 1]** with an acceleration factor of 8.
 
-- Sending the ReconData (Buffer) to Matlab : 213 sec
-- Sending the Bucket to Matlab then buffer  : 37 sec
+- Sending the ReconData (Buffer) to Matlab : **213 sec**
+- Sending the Bucket to Matlab then buffer  : **37 sec**
 
 ##### Buffer -> Enhancing steps to allow multiple dimensions
 
@@ -50,9 +50,13 @@ The complete configuration file can be found in the solutions. An excerpt here s
 
 
 
-To design the MP2RAGE_bufferrecon, the example buffer_recon.m from the Gadgetron examples will be modified. Modifications are 1/Ouput complex images all the way through and 2/Compute the MP2RAGE image from the 2 echoes.
+To design the **MP2RAGE_bufferrecon**, the example **buffer_recon.m** from the Gadgetron examples will be modified. Modifications are 
 
-First, the generated images from the k-space need to remain complex. The coil combination and the MRD image created should be altered. During coil combination, the image phase needs to be calculated. A simple but robust phase calculation is inserted, considering the coil dimension being the 1st dimension:
+ 1/Output complex images all the way through
+
+ 2/Compute the MP2RAGE image from the 2 echoes.
+
+First, the generated images from the k-space need to remain complex. The **coil combination** and the MRD image created should be altered. During coil combination, the image phase needs to be calculated. A simple but robust phase calculation is inserted, considering the coil dimension being the 1st dimension:
 
 ```matlab
     function image = combine_channels_cplx(image)
@@ -129,7 +133,7 @@ end
 
 ##### Image processing gadget
 
-Finally, the MP2RAGE image reconstruction can be performed by existing Gadgetron gadgets and only the image processing step can be included in a Matlab gadget. This exercise aims at inserting an image->image Matlab gadget that accumulates the 2 incoming images and outputs the MP2RAGE image as an extra series.
+Finally, the MP2RAGE image reconstruction can be performed by existing Gadgetron gadgets and only the image processing step can be included in a Matlab gadget. This exercise aims at inserting an **image->image Matlab gadget** that accumulates the 2 incoming images and outputs the MP2RAGE image as an extra series.
 
 Let us start over from a simple configuration file:
 
