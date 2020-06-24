@@ -1,8 +1,13 @@
 ## Demo 1: MP2RAGE reconstruction
 
-##### Bucket -> Show workflow latency difference
+[Bucket]: https://github.com/gadgetron/GadgetronOnlineClass/blob/master/Courses/Day3/Lecture2/Exercises-correction/bucket/Lecture%209%20%20Prototyping%20at%20the%20scanner%20with%20MATLAB%20%20part%202.md	""Bucket exercise""
 
-Aurélien?
+Simplicity often leads to use the gadget **BucketToBuffer** before calling Matlab. However in highly under-sampled cases, using the bucket is faster than loading the ReconData (Buffer) object. For example for sparse acquisition  with a lot of un-acquired lines like Compressed-Sensing ([see this issue](https://github.com/gadgetron/gadgetron/issues/808)) :
+
+To give some numbers of processing times, for a k-space size of : **Data dimensions [RO E1 E2 CHA N S SLC] : [320 320 240 64 2 1 1]** with an acceleration factor of 8.
+
+- Sending the ReconData (Buffer) to Matlab : 213 sec
+- Sending the Bucket to Matlab then buffer  : 37 sec
 
 ##### Buffer -> Enhancing steps to allow multiple dimensions
 
@@ -84,7 +89,7 @@ Then, sending all images requires also a loop, so that send_image_to_client.m is
     end
 ```
 
-Finally, computing the MP2RAGE image:
+Eventually, computing the MP2RAGE image:
 
 ```matlab
 function imageout = combine_echoes(image)
@@ -98,6 +103,8 @@ function imageout = combine_echoes(image)
     imageout(1,s).header.image_series_index=2;
 end
 ```
+
+
 The final MP2RAGE_bufferrecon gadget will look like this:
 
 ```matlab
@@ -119,9 +126,6 @@ end
 ```
 
 
-##### Reconstruction with BART (called from Matlab)
-
-Aurélien?
 
 ##### Image processing gadget
 
