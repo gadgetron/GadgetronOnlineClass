@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <version>2</version>
+
+  <readers>
+    <reader>
+      <classname>AcquisitionReader</classname>
+      <dll>gadgetron_core_readers</dll>
+    </reader>
+  </readers>
+
+  <stream>
+
+    <gadget>
+      <classname>NoiseAdjustGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+
+    <gadget>
+      <classname>RemoveROOversamplingGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+
+    <gadget>
+      <classname>AcquisitionAccumulateTriggerGadget</classname>
+      <dll>gadgetron_mricore</dll>
+      <property name="trigger_dimension" value="repetition"/>
+    </gadget>
+
+    <gadget>
+      <classname>BucketToBufferGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+
+    <external>
+      <connect port="18000"/>
+      <configuration/>
+    </external>
+    
+  </stream>
+
+  <writers>
+    <writer>
+      <classname>ImageWriter</classname>
+      <dll>gadgetron_core_writers</dll>
+    </writer>
+  </writers>
+
+</configuration>
