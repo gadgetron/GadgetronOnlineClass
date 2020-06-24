@@ -1,3 +1,7 @@
+## News 2020-06-24 -> The recordings are available on YouTube
+
+The first recordings have been posted on YouTube on a dedicated channel: https://www.youtube.com/channel/UCMmRhQOw8p0F0h3stwL26eQ. 
+
 ## News 2020-06-05 -> Undelivered Mail Returned to Sender
 
 Some email addresses cannot be reached (...@gmial.cpm), we try to correct them, but some of them are more difficult to guess. For other, it might also be a security rule from your mail server. If you haven't received the instruction by email and most importantly the Slack invitation within a few day. Please contact us gadgetron2020 at sciencesconf dot org
