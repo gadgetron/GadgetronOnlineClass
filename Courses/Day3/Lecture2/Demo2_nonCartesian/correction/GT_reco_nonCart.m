@@ -24,7 +24,8 @@ trajtmp = acquisition.bits.buffer.trajectory;
 % 3D traj : [3,sizeR, proj] (with zero if 2D)
 traj = zeros(3,size(trajtmp,2),size(trajtmp,3));
 traj(1:2,:,:)=trajtmp;
-traj = traj*connection.header.encoding.encodedSpace.fieldOfView_mm.x; % scalinng 1/FOV unit
+
+traj = traj*connection.header.encoding.encodedSpace.matrixSize.x; % scaling 1/FOV unit
 
 % kspace data : [1, sizeR, number of proj, number of channel]
 matrice = acquisition.bits.buffer.data;
@@ -58,8 +59,8 @@ subplot(2,2,4);imshow(abs(im_pics),[]); title('PICS');
 % lets try with nlinv
 [reco,sens_nlinv] = bart('nlinv -d5 -i10 -t',traj,matrice);
 % crop fov by 2 for the sens_nlinv
-sens2=bart('crop 0 320',sens_nlinv);
-sens2=bart('crop 1 320',sens2);
+sens2=bart('crop 0 256',sens_nlinv);
+sens2=bart('crop 1 256',sens2);
 
 im_pics2 = bart('pics -S -e -i200 -R W:3:0:0.001 -t',traj,matrice,sens2);
 
