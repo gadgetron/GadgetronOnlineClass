@@ -77,9 +77,15 @@ Save. Once installed, we're good to go!
 
  **WARNING: the following has not been tested!**You need to install gadgetron from the source code and edit the file **gadgetron/connection/stream/external/Matlab.cpp**
 
-Replace line 16 : `boost::process::args={"-batch", "gadgetron.external.main"},'`
+Replace line 16 : 
+
+```boost::process::args={"-batch", "gadgetron.external.main"},'```
+
  by
- `boost::process::args={"--nosplash", "--nodesktop", "-r",  "\"gadgetron.external.main; exit\""},`Recompile gadgetron.
+ 
+ ```boost::process::args={"-nosplash", "-nodesktop", "-r", "\"gadgetron.external.main; exit\""},```
+ 
+ and recompile gadgetron.
 
 **Optional**
 
