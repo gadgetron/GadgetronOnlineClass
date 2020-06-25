@@ -304,7 +304,7 @@ trajtmp = acquisition.bits.buffer.trajectory;
 % 3D traj : [3,sizeR, proj] (with zero if 2D)
 traj = zeros(3,size(trajtmp,2),size(trajtmp,3));
 traj(1:2,:,:)=trajtmp;
-traj = traj*connection.header.encoding.encodedSpace.fieldOfView_mm.x; % scaling 1/FOV unit
+traj = traj*connection.header.encoding.encodedSpace.matrixSize.x; % scaling 1/FOV unit
 ```
 
 
