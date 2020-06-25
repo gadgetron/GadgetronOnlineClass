@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <version>2</version>
+    <readers>
+        <reader>
+            <dll>gadgetron_mricore</dll>
+            <classname>GadgetIsmrmrdAcquisitionMessageReader</classname>
+        </reader>
+        <reader>
+            <dll>gadgetron_mricore</dll>
+            <classname>GadgetIsmrmrdWaveformMessageReader</classname>
+        </reader>
+    </readers>
+    <writers>
+        <writer>
+            <dll>gadgetron_mricore</dll>
+            <classname>MRIImageWriter</classname>
+        </writer>
+    </writers>
+    
+    <stream>
+        <gadget>
+            <name>RemoveROOversampling</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>RemoveROOversamplingGadget</classname>
+        </gadget>
+
+        <gadget>
+            <name>AccTrig</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>AcquisitionAccumulateTriggerGadget</classname>
+        </gadget>
+
+        <gadget>
+            <name>Buffer</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>BucketToBufferGadget</classname>
+            <property>
+                <name>split_slices</name>
+                <value>true</value>
+            </property>
+        </gadget>
+
+        <gadget>
+            <name>SimpleRecon</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>SimpleReconGadget</classname>
+        </gadget>
+
+        <gadget>
+            <name>ImageArraySplit</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>ImageArraySplitGadget</classname>
+        </gadget>
+
+        <external>
+            <execute name="gadgetron.custom.MP2RAGEcombination" type="matlab"/>
+            <configuration/>
+        </external>
+
+        <gadget>
+            <name>Extract</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>ExtractGadget</classname>
+        </gadget>
+
+        <gadget>
+            <name>ImageFinish</name>
+            <dll>gadgetron_mricore</dll>
+            <classname>ImageFinishGadget</classname>
+        </gadget>
+    </stream>
+</configuration>
