@@ -77,9 +77,15 @@ Save. Once installed, we're good to go!
 
  **WARNING: the following has not been tested!**You need to install gadgetron from the source code and edit the file **gadgetron/connection/stream/external/Matlab.cpp**
 
-Replace line 16 : `boost::process::args={"-batch", "gadgetron.external.main"},'`
+Replace line 16 : 
+
+```boost::process::args={"-batch", "gadgetron.external.main"},'```
+
  by
- `boost::process::args={"--nosplash", "--nodesktop", "-r",  "\"gadgetron.external.main; exit\""},`Recompile Gadgetron.
+ 
+ ```boost::process::args={"-nosplash", "-nodesktop", "-r", "\"gadgetron.external.main; exit\""},```
+ 
+ and recompile gadgetron.
 
 **Optional**
 
@@ -167,4 +173,4 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
 
 The objective of this exercise is to reconstruct the 2DMP2RAGE.h5 dataset without the BucketToBuffer gadget. You have to buffer the data under Matlab (hints : use the linear indexing of Matlab).
 
-A correction and detailed instruction is available in the corresponding **bucket** subfolder.
+A correction and detailled instruction is available in the corresponding **bucket** subfolder.

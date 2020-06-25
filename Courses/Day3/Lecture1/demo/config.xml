@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <version>2</version>
+
+  <readers>
+    <reader>
+      <classname>AcquisitionReader</classname>
+      <dll>gadgetron_core_readers</dll>
+    </reader>
+  </readers>
+
+  <stream>
+    
+  </stream>
+
+  <writers>
+    <writer>
+      <classname>ImageWriter</classname>
+      <dll>gadgetron_core_writers</dll>
+    </writer>
+  </writers>
+
+</configuration>

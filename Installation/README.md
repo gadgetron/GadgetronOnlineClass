@@ -7,7 +7,7 @@ The Gadgetron Online Class features several exercises, as well as live demos dur
    - Including the Gadgetron Matlab interface (if you are interested in using Matlab with Gadgetron).
  - A suite of scientific programming tools.
    - Python; matplotlib, numpy, scipy.
-   - Matlab 2018a or newer; if interested.
+   - Matlab 2018b or newer; if interested. (For lower version see [instruction](https://github.com/gadgetron/GadgetronOnlineClass/blob/master/Courses/Day3/Lecture2/README.md#installation))
  - A basic familiarity with linux shell commands.  
  - A comfortable text editor (or IDE) for Python, XML, C++, etc.
    

@@ -1,3 +1,7 @@
+## News 2020-06-24 -> The recordings are available on YouTube
+
+The first recordings have been posted on YouTube on a dedicated channel: https://www.youtube.com/channel/UCMmRhQOw8p0F0h3stwL26eQ. 
+
 ## News 2020-06-05 -> Undelivered Mail Returned to Sender
 
 Some email addresses cannot be reached (...@gmial.cpm), we try to correct them, but some of them are more difficult to guess. For other, it might also be a security rule from your mail server. If you haven't received the instruction by email and most importantly the Slack invitation within a few day. Please contact us gadgetron2020 at sciencesconf dot org
@@ -44,11 +48,11 @@ June 18, 2020 | 15:55-16:05 |  | [Break]
 June 18, 2020 | 16:05-17:00 | [link](Courses/Day2/Lecture3) | [Communication process with the Siemens scanner] | Hui Xue 
 June 18, 2020 | 17:00-18:00 | [link](Courses/Day2/QandA) | [Q&A] | Everybody
 
-### Day 3 : Foreign-Language-Interface 
+### Day 3 : External-Language-Interface 
 
 Date  | Time | Place | Topic | Tutor
 ----- | ---- | ----- | ----- | -----
-June 25, 2020 | 14:00-15:00 | [link](Courses/Day3/Lecture1) | [Foreign-Language-Interface ] | Kristoffer Knudsen
+June 25, 2020 | 14:00-15:00 | [link](Courses/Day3/Lecture1) | [External-Language-Interface ] | Kristoffer Knudsen
 June 25, 2020 | 15:00-15:55 | [link](Courses/Day3/Lecture2) | [Protyping at the scanner with MATLAB part 1] |  Aurélien Trotier & Stanislas Rapacchi  
 June 25, 2020 | 15:55-16:05 |  | [Break]
 June 25, 2020 | 16:05-17:05 | [link](Courses/Day3/Lecture3) | [Protyping at the scanner with MATLAB part 2] | Oliver Josephs 
