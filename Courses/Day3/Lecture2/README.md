@@ -1,6 +1,6 @@
-# Lecture 9 : Protyping at the scanner with MATLAB part 1
+# Lecture 9 : Prototyping at the scanner with MATLAB part 1
 
-Title : Protyping at the scanner with MATLAB part 1
+Title : Prototyping at the scanner with MATLAB part 1
 
 Schedule : June 25, 2020 | 15:00-16:00
 
@@ -165,12 +165,12 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
 5. [Demo2: Non-Cartesian](Demo2_nonCartesian)
    - Trajectory / dcf -> change reader part
    - Reconstruction using BART from Matlab
-   - Add trajectory to acquisition and forward to gadgetron GriddingGadget (**Not enough time**)
+   - Add trajectory to acquisition and forward to Gadgetron GriddingGadget (**Not enough time**)
 
-# Exercices
+# Exercises
 
-## Buffering the data under matlab
+## Buffering the data under Matlab
 
-The objective of this exercise is to reconstruct the 2DMP2RAGE.h5 dataset without the BucketToBuffer gadget. You have to buffer the data under matlab (hints : use the linear indexing of matlab).
+The objective of this exercise is to reconstruct the 2DMP2RAGE.h5 dataset without the BucketToBuffer gadget. You have to buffer the data under Matlab (hints : use the linear indexing of Matlab).
 
 A correction and detailled instruction is available in the corresponding **bucket** subfolder.
