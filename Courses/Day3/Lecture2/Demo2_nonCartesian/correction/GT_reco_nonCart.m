@@ -9,6 +9,12 @@ next_acquisition = @connection.next;
 
 acquisition = next_acquisition(); % Call input function to produce the next acquisition.
 
+
+%% show traj and dcw
+figure; 
+subplot(2,1,1);plot(acquisition.bits.buffer.trajectory(1,:,1),...
+										acquisition.bits.buffer.trajectory(2,:,1));
+subplot(2,1,2);plot(acquisition.bits.buffer.density(:,:,1));
 %% BART
 % see webinard on how to use bart : https://github.com/mrirecon/bart-webinars
 
@@ -30,22 +36,24 @@ dcf = repmat(acquisition.bits.buffer.density,[1 1 1 nCh]);
 % gridding
 agrid = bart('nufft -a', traj,matrice); % blurring due to oversampling
 agrid = bart('rss 8',agrid);
-figure; imshow(agrid,[]); title('Adjoint');
+figure; subplot(2,2,1);
+imshow(agrid,[]); title('Adjoint');
 
-agrid = bart('nufft -a ', traj,matrice.*dcf); % if we have dcf we can correct that
-agrid = bart('rss 8',agrid);
-figure; imshow(agrid,[]); title('Adjoint + density');
+agrid2 = bart('nufft -a ', traj,matrice.*dcf); % if we have dcf we can correct that
+agrid2 = bart('rss 8',agrid2);
+subplot(2,2,2);imshow(agrid2,[]); title('Adjoint + density');
 
 igrid = bart('nufft -i -c', traj,matrice); % iterative reconstruction 
 igrid = bart('rss 8',igrid);
-figure; imshow(igrid,[]); title('Inverse');
+subplot(2,2,3);imshow(igrid,[]); title('Inverse');
 
 % sens with ecalib
 igrid2 = bart('nufft -i -c', traj,matrice); % iterative reconstruction 
 ksp = bart('fft -u 3', igrid2);
 sens = bart('ecalib -m1',ksp);
 
-im_pics = bart('pics -S -e -i200 -R W:3:0:0.01 -t',traj,matrice,sens);
+im_pics = bart('pics -S -e -i200 -R W:3:0:0.001 -t',traj,matrice,sens);
+subplot(2,2,4);imshow(abs(im_pics),[]); title('PICS');
 
 % lets try with nlinv
 [reco,sens_nlinv] = bart('nlinv -d5 -i10 -t',traj,matrice);
@@ -53,7 +61,7 @@ im_pics = bart('pics -S -e -i200 -R W:3:0:0.01 -t',traj,matrice,sens);
 sens2=bart('crop 0 320',sens_nlinv);
 sens2=bart('crop 1 320',sens2);
 
-im_pics2 = bart('pics -S -e -i200 -R W:3:0:0.01 -t',traj,matrice,sens2);
+im_pics2 = bart('pics -S -e -i200 -R W:3:0:0.001 -t',traj,matrice,sens2);
 
 %% Permute data : channel, readout, PE, SE
 img_to_send{1}=permute(abs(reco),[4, 1, 2, 3]);
