@@ -14,4 +14,8 @@ This is a demonstration example to implement Grappa reconstruction using Pytorch
 
 This is a typical supervised learning example where user did the pre-training outside Gadgetron and supplied a pre-trained model. Gadgetron allows user to write python functions to load the model and apply it on incoming images. In this example, a model was pre-trained to detect key landmark points in long-axis CMR cine images. The resulting detected key points was plotted on images and send back to scanner.
 
+The tested data can be downloaded [here](https://gadgetrondata.blob.core.windows.net/open-shared-datasets/2ch_RT_cine.h5). The pre-trained model can be downloaded [here](https://gadgetrondata.blob.core.windows.net/open-shared-datasets/CMR_landmark_network_RO_352_E1_352_ch2_ch3_ch4_myo_pts_with_T1_LGE_LossMultiSoftProb_KLD_Dice_Pytorch_1.5.0_2020-06-17_20200617_111642.pts). These data and model are for research usage only.
+
+The model was trained in [Pytorch 1.5.0](https://pytorch.org/). The default path for Gadgetron to load model is ${CMAKE_INSTALL_PREFIX}/local/share/gadgetron/python .
+
 ![Image of Inline landmark detection](detection.jpg)
