@@ -256,7 +256,7 @@ The corresponding gadgets also server as good starting point for user to overloa
 
 This [lesson](Courses/Day4/Lecture3) introduces the topic of neural network model in Gadgetron. 
 
-[The introduction of AI model into Gadgetron](http://archive.ismrm.org/2019/4837.html) is a recent development, but of great importance to improve imaging, computing, analysis and reporting. First, Gadgetron offers ability for user to load their pre-trained AI models and apply models to incoming kspace and imaging data. Second usecase of Gadgetron to support AI is to allow user to do inline training and apply resulting model to incoming data (e.g. check the Grappa_AI example, where a .[Pytorch](https://pytorch.org/) implemention of Grappa reconstruction was demonstrated).
+[The introduction of AI model into Gadgetron](http://archive.ismrm.org/2019/4837.html) is a recent development, but of great importance to improve imaging, computing, analysis and reporting. First, Gadgetron offers ability for user to load their pre-trained AI models and apply models to incoming kspace and imaging data. Second usecase of Gadgetron to support AI is to allow user to do inline training and apply resulting model to incoming data (e.g. check the Grappa_AI example, where a [Pytorch](https://pytorch.org/) implemention of Grappa reconstruction was demonstrated).
 
 User can choose to implement AI functionalities in python gadgets or in python functions which can be called in C++ gadgets. 
 
