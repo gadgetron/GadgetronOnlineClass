@@ -244,32 +244,26 @@ This [lesson](Courses/Day3/Lecture1) introduces ...
   * [ ]( )
   * [ ]( )
 
+### 4.2 - Generic Recon in Gadgetron  (  )
 
-### 4.1 - Title  (  )
+This [lesson](Course/Day4/Lecture2) introduces the generic reconstruction concept and implemenation in Gadgetron. The generic recon is first an idea to develop a systematic handling of multi-dimension kspace MR data and implemented most commonly used technique to support multiple imaging protocols. The key idea is the "on-the-fly" triggering and reconstruction.
 
-This [lesson](Courses/Day3/Lecture2) introduces ...
+The key components include data triggering, data bucket organization, auto-calibration data preparation, coil compression, reconstruction, kspace filter, partial fourier handling, and FOV adjustment gadgets. User can specify which dimension to trigger (e.g. for a multi-slice cine scan, triggering can be done with SLICE dimension). In this way, the reconstruction can start after data from one slice is acquired, instead of waiting to the end of scan. After triggering, every data bucket was processed in a uniformed manner and each encoding space is handled separately. 
+
+The corresponding gadgets also server as good starting point for user to overload for their own use cases, if the generic chain may not handle a specific use case.
+
+### 4.3 - Call AI model in Gadgetron (  )
+
+This [lesson](Courses/Day4/Lecture3) introduces the topic of neural network model in Gadgetron. 
+
+[The introduction of AI model into Gadgetron](http://archive.ismrm.org/2019/4837.html) is a recent development, but of great importance to improve imaging, computing, analysis and reporting. First, Gadgetron offers ability for user to load their pre-trained AI models and apply models to incoming kspace and imaging data. Second usecase of Gadgetron to support AI is to allow user to do inline training and apply resulting model to incoming data (e.g. check the Grappa_AI example, where a .[Pytorch](https://pytorch.org/) implemention of Grappa reconstruction was demonstrated).
+
+User can choose to implement AI functionalities in python gadgets or in python functions which can be called in C++ gadgets. 
 
 **See also**:
 
-  * [ ]( )
-  * [ ]( )
-
-
-### 4.1 - Title  (  )
-
-This [lesson]() introduces ...
-
-**See also**:
-
-  * [ ]( )
-  * [ ]( )
-
-
-
-
-
-
-
+  * [Why we proposed InlineAI](https://www.linkedin.com/pulse/why-we-propose-inlineai-medical-imaging-devices-hui-xue/)
+  
 
 ## External links 
 
