@@ -129,6 +129,13 @@ The final link these data can be accessed at, which should bring you back to the
 
 This file should have a checksum of: 361e2dccec2949c4914414dada6d2b5dd841aff4 computed using 'shasum' on macOS and openSUSE.
 
+A second archive file for additional data for the class has been added [here](https://zenodo.org/record/3906695#.XvOF-C2ZPOQ).
+
+The DOI link for these data is [https://doi.org/10.5281/zenodo.3906695](https://doi.org/10.5281/zenodo.3906695).
+
+The checksum computed by shasum for this second archive is: ddfd703098bde34f95dc886aa268d0c59d5de5da
+
+
 
 ## 1. Introduction courses (day 1 : June 11th 2020)
 
