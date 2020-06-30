@@ -8,7 +8,7 @@ The key idea behind generic recon chain is the on-the-fly recon concept: reconst
 
 This couse reveals the motivation and design of generic chain and go through all key gadgets for their functionalities. The key data structures are introduced. 
 
-To run the example realtime CMR cine imaging data:
+Please download the test data [here](https://gadgetrondata.blob.core.windows.net/open-shared-datasets/rt_cine_test_2slice.h5), To run the example realtime CMR cine imaging data:
 
 ```
 gadgetron_ismrmrd_client -f rt_cine_test_2slice.h5 -c Generic_Cartesian_Grappa_RealTimeCine.xml -a host_ip -p host_port
