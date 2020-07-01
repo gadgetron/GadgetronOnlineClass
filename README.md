@@ -1,6 +1,6 @@
 ## News 2020-06-24 -> The recordings are available on YouTube
 
-The classes have been posted on YouTube on a dedicated playlist: https://www.youtube.com/playlist?list=PL3dITfhovhLW-ySr_KPBS8KKI9tdLjfdR. 
+The classes have been posted on YouTube on a dedicated [playlist](https://www.youtube.com/playlist?list=PL3dITfhovhLW-ySr_KPBS8KKI9tdLjfdR). 
 
 For Day 2 - Part 3 (Connecting with IceGadgetron), please visit the Siemens IDEA board for the link. 
 
