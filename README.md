@@ -1,6 +1,7 @@
 ## News 2020-06-24 -> The recordings are available on YouTube
 
-The first recordings have been posted on YouTube on a dedicated channel: https://www.youtube.com/channel/UCMmRhQOw8p0F0h3stwL26eQ. 
+The classes have been posted on YouTube on a dedicated playlist: https://www.youtube.com/playlist?list=PL3dITfhovhLW-ySr_KPBS8KKI9tdLjfdR. 
+For Day 2 - Part 3 (Connecting with IceGadgetron), please visit the Siemens IDEA board for the link. 
 
 ## News 2020-06-05 -> Undelivered Mail Returned to Sender
 
@@ -147,7 +148,6 @@ This [lecture](introduction-part1.md) does not attempt to be comprehensive and c
 
  * [wiki](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Gadgets)
 
-
 ### 1.2 - Introduction (14:30 -> 15:30 CEST)
 
 This [lecture](Coureses/Day1/Lecture2) is a Practical Introduction to Gadgetron. It takes a very hand-on approach to getting started with Gadgetron, aimed at giving new users the information they need to assemble and run their own reconstructions using Gadgetron.
@@ -165,15 +165,6 @@ The primary goal of this [lecture](Courses/Day1/Lecture3) introduces the python 
 ### 1.4 - Q&A
 
 
-
-**See also**:
-
-  * []()
-  * []()
-  * []()
-
-
-
 ## 2. MRD, a vendor-agnostic file format for MRI reconstruction (or toward the scanner room)   (day 2: June 18th)
 
 ### 2.1 - Title  (  )
@@ -183,8 +174,6 @@ This [lesson](Courses/Day2/Lecture1) introduces the ISMSMRD format
 **See also**:
 
   * [ismrmrd](https://ismrmrd.github.io/)
-  * [ ]( )
-
 
 ### 2.2 - Siemens/GE/Bruker raw data conversion to MRD through XML style sheets, and working with HDF5 files
 
@@ -196,7 +185,6 @@ Python 3.
   * [HDF5 for Python](https://www.h5py.org)
   * [Juypter Notebooks](https://jupyter.org)
 
-
 ### 2.3 - Communication process with the Siemens scanner
 
 This course servers an introduction to the IceGadgetron software. The main functinality of IceGadgetron is to stream siemens MR kspace data to MRD formant and send data to Gadgetron. As Gadgetron reconstructed images and send images back to scanner, IceGadgetron will receive the images and pass them down the functor chain. In this way, the inline processing is achieved, which allows seamless integration of Gadgetron to MR scanner and be used by non-technical users. 
@@ -204,22 +192,23 @@ This course servers an introduction to the IceGadgetron software. The main funct
 **See also**:
 
   * [IceGadgetron](https://github.com/NHLBI-MR/IceGadgetron)
-  * [ ]( )
+
+### 2.4 - Q&A
 
 
 ## 3. Foreign-Language-Interface  (day 2: June 25th)
 
-### 3.1 - Title  (  )
+### 3.1 - External-Language-Interface
 
-This [lesson](Courses/Day3/Lecture1) introduces ...
+This [lesson](Courses/Day3/Lecture1) introduces connecting gadgetron to matlab. 
 
 **See also**:
+  * [gadgetron-matlab](https://github.com/gadgetron/gadgetron-matlab)
+  * [gadgetron and matlab](https://github.com/gadgetron/gadgetron/wiki/Using-Matlab-with-Gadgetron)
+  * [external language interface](https://github.com/gadgetron/gadgetron/wiki/External-Language-Interface)
 
-  * [ ]( )
-  * [ ]( )
 
-
-### 3.2 - Title  (  )
+### 3.2 - Protyping at the scanner with MATLAB part 1
 
 This [lesson](Courses/Day3/Lecture2) introduces ...
 
@@ -229,7 +218,7 @@ This [lesson](Courses/Day3/Lecture2) introduces ...
   * [ ]( )
 
 
-### 3.3 - Title  (  )
+### 3.3 - Protyping at the scanner with MATLAB part 2
 
 This [lesson]() introduces ...
 
@@ -238,6 +227,7 @@ This [lesson]() introduces ...
   * [ ]( )
   * [ ]( )
 
+### 3.4 - Q & A 
 
 
 ## 4. C++  (day 4: July 2nd)
