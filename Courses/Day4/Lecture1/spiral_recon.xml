@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <version>2</version>
+
+  <readers>
+    <reader>
+      <classname>AcquisitionReader</classname>
+      <dll>gadgetron_core_readers</dll>
+    </reader>
+  </readers>
+
+  <stream>
+
+    <gadget>
+      <classname>NoiseAdjustGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+
+    <gadget>
+      <classname>RemoveROOversamplingGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+
+    <gadget>
+      <classname>SpiralAccumulateGadget</classname>
+      <dll>libgadgetron_tutorial.so</dll>
+    </gadget>
+
+    <gadget>
+      <classname>NonCartesianGridding</classname>
+      <dll>gadgetron_tutorial</dll>
+    </gadget>
+
+    <gadget>
+      <classname>ExtractGadget</classname>
+      <dll>gadgetron_mricore</dll>
+    </gadget>
+  </stream>
+
+  <writers>
+    <writer>
+      <classname>ImageWriter</classname>
+      <dll>gadgetron_core_writers</dll>
+    </writer>
+  </writers>
+
+</configuration>
