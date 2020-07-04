@@ -4,7 +4,7 @@ While AI is very significant on consumer market with countless applications, its
 
 Please ref to the slides for explanation of call AI models.
 
-These demo examples are currently on Gadgetron3.17_GTBabylon branch and will be merged to master branch. 
+These demo examples are on the master branch. 
 
 To run the two demo examples:
 
