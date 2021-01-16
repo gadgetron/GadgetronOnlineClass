@@ -86,7 +86,7 @@ end
 
 ```
 
- The dataset called **radial2D_LUNGS_REG160SPKS** is available here  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3906695.svg)](https://doi.org/10.5281/zenodo.3906695) in Day-3/Lecture-2 
+ The dataset called **radial2D_LUNGS_REG160SPKS** is available here : https://doi.org/10.5281/zenodo.3906695
 
 
 
