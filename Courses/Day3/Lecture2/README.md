@@ -177,7 +177,7 @@ A correction and detailled instruction is available in the corresponding **bucke
 
 ## Trajectory with matlab + nufft with gadgetron
 
-The objective of this exercise is to reconstruct this dataset called **radial2D_LUNGS_REG160SPKS** and available here  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3906695.svg)](https://doi.org/10.5281/zenodo.3906695) in Day-3/Lecture-2 
+The objective of this exercise is to reconstruct this dataset called **radial2D_LUNGS_REG160SPKS** and available here  https://doi.org/10.5281/zenodo.3906695 in Day-3/Lecture-2 
 
 It is a 2D radial dataset without any information about the trajectory inside the .h5. You will have to :
 * add the trajectory to each readout
