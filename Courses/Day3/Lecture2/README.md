@@ -174,3 +174,59 @@ The data has been converted with **siemens_to_ismrmrd**, we will not discuss dat
 The objective of this exercise is to reconstruct the 2DMP2RAGE.h5 dataset without the BucketToBuffer gadget. You have to buffer the data under Matlab (hints : use the linear indexing of Matlab).
 
 A correction and detailled instruction is available in the corresponding **bucket** subfolder.
+
+## Trajectory with matlab + nufft with gadgetron
+
+The objective of this exercise is to reconstruct this dataset called **radial2D_LUNGS_REG160SPKS** and available here  https://doi.org/10.5281/zenodo.3906695 in Day-3/Lecture-2 
+
+It is a 2D radial dataset without any information about the trajectory inside the .h5. You will have to :
+* add the trajectory to each readout
+* send back each readout one by one to gadgetron
+* create a buffer and bucket then use the gadget `CPUGriddingReconGadget` 
+
+**Supporting function for the trajectory**
+```matlab
+function K=compute_traj4bart(ADCres, Nspokes, SamplingType,TrajOffset)
+
+% generate a radial trajectory with Nspokes lines.
+% kloc_onesided=getpolar(Nspokes,ADCres);
+% kloc_centered=kloc_onesided-ADCres/2-ADCres/2*1i-1-1i;
+
+switch SamplingType
+    case 0 % regular full spoke
+        angleIncrement = pi / Nspokes;
+    case 1 % golden angle full spoke
+        angleIncrement = pi * (sqrt(5)-1)/2;
+    case 2 % golden angle small version full spoke
+        angleIncrement = pi * (3-sqrt(5))/2; 
+    case 3 % regular half spoke
+        angleIncrement = 2*pi / Nspokes;
+    case 4 % golden angle half spoke
+        angleIncrement = 2*pi * (sqrt(5)-1)/2;
+    case 5% golden angle small version half spoke
+        angleIncrement = 2*pi * (3-sqrt(5))/2; 
+end
+
+% between -.5 and .5
+if(SamplingType<3)
+   SpokeVector = linspace(-ADCres/2+1,ADCres/2,ADCres);
+else
+   SpokeVector = linspace(0,ADCres,ADCres);
+end
+
+% Compute the exact Fourier samples on the radial trajectory.
+
+if(~exist('TrajOffset','var'))
+    TrajOffset=0;
+end
+
+K = zeros([3,ADCres,Nspokes]);
+
+ for s = 1:Nspokes
+    cs = TrajOffset + s-1;
+    K(1,:,s) = SpokeVector*cos(cs*angleIncrement);
+    K(2,:,s) = SpokeVector*sin(cs*angleIncrement);
+ end
+end
+
+```
