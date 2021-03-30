@@ -127,9 +127,5 @@ def handle_connection(connection):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
-    def spawn_process(*args):
-        child = multiprocessing.Process(target=handle_connection, args=args)
-        child.start()
-
     while True:
-        gadgetron.external.listen(18000, spawn_process)
+        gadgetron.external.listen(18000, handle_connection)
